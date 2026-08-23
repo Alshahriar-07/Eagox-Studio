@@ -319,7 +319,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Frequently Asked Questions */}
-      <section className="space-y-6 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+<section className="space-y-6 pt-8 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-2xl space-y-1">
           <span className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
             COMMON INQUIRIES
