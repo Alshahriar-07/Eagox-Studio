@@ -83,36 +83,38 @@ export default function App() {
               >
                 {currentPage === 'home' && (
                   <HomePage
+                    currentPage={currentPage}
                     onNavigate={handleNavigate}
                     onSelectProject={handleSelectProject}
                   />
                 )}
 
                 {currentPage === 'about' && (
-                  <AboutPage onNavigate={handleNavigate} />
+                  <AboutPage currentPage={currentPage} onNavigate={handleNavigate} />
                 )}
 
                 {currentPage === 'projects' && (
                   <ProjectsPage
+                    currentPage={currentPage}
                     onNavigate={handleNavigate}
                     selectedProjectId={selectedProjectId}
                   />
                 )}
 
                 {currentPage === 'faq' && (
-                  <FAQPage onNavigate={handleNavigate} />
+                  <FAQPage currentPage={currentPage} onNavigate={handleNavigate} />
                 )}
 
                 {currentPage === 'author' && (
-                  <AuthorPage onNavigate={handleNavigate} />
+                  <AuthorPage currentPage={currentPage} onNavigate={handleNavigate} />
                 )}
 
                 {currentPage === 'order' && (
-                  <OrderPage onNavigate={handleNavigate} />
+                  <OrderPage currentPage={currentPage} onNavigate={handleNavigate} />
                 )}
 
                 {currentPage === 'contact' && (
-                  <ContactPage onNavigate={handleNavigate} />
+                  <ContactPage currentPage={currentPage} onNavigate={handleNavigate} />
                 )}
               </motion.div>
             </AnimatePresence>

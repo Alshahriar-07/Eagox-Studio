@@ -1,13 +1,17 @@
 import React from 'react';
 import { PageId } from '../../types';
 import { FAQSection } from '../FAQSection';
+import { useSEO } from '../../hooks/useSEO';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
 
 interface FAQPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
 }
 
-export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
+export const FAQPage: React.FC<FAQPageProps> = ({ currentPage, onNavigate }) => {
+  useSEO(currentPage);
+
   return (
     <div className="space-y-12 animate-fade-in" id="eagox-faq-page">
       <div className="flex items-center justify-between">

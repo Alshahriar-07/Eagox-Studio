@@ -4,6 +4,7 @@ import { Globe3D } from '../Globe3D';
 import { FAQSection } from '../FAQSection';
 import { PROJECTS_DATA, SERVICE_OPTIONS } from '../../data/projectsData';
 import founderJpeg from '../../assets/founder.jpeg';
+import { useSEO } from '../../hooks/useSEO';
 import {
   ArrowRight,
   MessageCircle,
@@ -16,14 +17,18 @@ import {
 } from 'lucide-react';
 
 interface HomePageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
   onSelectProject: (projectId: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
+  currentPage,
   onNavigate,
   onSelectProject,
 }) => {
+  useSEO(currentPage);
+
   return (
     <div className="space-y-20 sm:space-y-28 animate-fade-in" id="eagox-homepage-view">
       {/* ========================================================================= */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../../types';
 import { EagoxLogo, EagoxIcon } from '../EagoxLogo';
+import { useSEO } from '../../hooks/useSEO';
 import {
   Compass,
   Cpu,
@@ -18,10 +19,12 @@ import {
 } from 'lucide-react';
 
 interface AboutPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
 }
 
-export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+export const AboutPage: React.FC<AboutPageProps> = ({ currentPage, onNavigate }) => {
+  useSEO(currentPage);
   const engineeringPhases = [
     {
       step: '01',

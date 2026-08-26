@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eagox Studio - OG Image Generator (1200×630)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; padding: 2rem; font-family: 'Plus Jakarta Sans', sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .container { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 1300px; width: 100%; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    p { color: #666; margin-bottom: 1.5rem; }
+    .canvas-wrapper { border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #09090b; }
+    canvas { display: block; }
+    button { padding: 1rem 2rem; background: #09090b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; margin-top: 1rem; width: 100%; max-width: 300px; }
+    button:hover { background: #1a1a1a; }
+    .note { background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .preview-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; font-size: 0.85rem; color: #666; }
+    .preview-info div { padding: 0.5rem; background: #f9f9f9; border-radius: 6px; text-align: center; }
+    .preview-info strong { display: block; color: #09090b; font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Eagox Studio — OG Image Generator</h1>
+    <p>Generate the 1200×630 Open Graph image for social sharing (Facebook, LinkedIn, X/Twitter, Discord, etc.)</p>
+
+    <div class="note">
+      <strong>Output:</strong> <code>og-image.png</code> (1200×630 PNG) — Place in <code>public/</code> directory for production use at <code>https://eagoxstudio.vercel.app/og-image.png</code>
+    </div>
+
+    <div class="canvas-wrapper">
+      <canvas id="ogCanvas" width="1200" height="630"></canvas>
+    </div>
+
+    <button id="downloadBtn">Download og-image.png</button>
+
+    <div class="preview-info">
+      <div><strong>Dimensions</strong> 1200 × 630 px</div>
+      <div><strong>Format</strong> PNG</div>
+      <div><strong>Aspect Ratio</strong> 1.91:1</div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('ogCanvas');
+    const ctx = canvas.getContext('2d');
+    const W = 1200, H = 630;
+
+    // Fonts need to load before drawing
+    document.fonts.ready.then(() => drawOG());
+
+    function drawOG() {
+      // Background - dark theme
+      const gradient = ctx.createLinearGradient(0, 0, W, H);
+      gradient.addColorStop(0, '#09090b');
+      gradient.addColorStop(0.5, '#111113');
+      gradient.addColorStop(1, '#09090b');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle grid pattern
+      ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, H);
+        ctx.stroke();
+      }
+      for (let y = 0; y < H; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(W, y);
+        ctx.stroke();
+      }
+
+      // Accent line - emerald
+      const accentGradient = ctx.createLinearGradient(0, 0, W, 0);
+      accentGradient.addColorStop(0, '#10b981');
+      accentGradient.addColorStop(1, '#059669');
+      ctx.fillStyle = accentGradient;
+      ctx.fillRect(0, 0, W, 4);
+
+      // Left content area
+      const leftX = 100;
+      const centerY = H / 2;
+
+      // Status pill
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = 1;
+      const pillW = 320, pillH = 44;
+      const pillX = leftX;
+      const pillY = centerY - 140;
+      roundRect(ctx, pillX, pillY, pillW, pillH, 22);
+      ctx.fill();
+      ctx.stroke();
+
+      // Pulse dot
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath();
+      ctx.arc(pillX + 22, pillY + pillH/2, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Pill text
+      ctx.font = '600 14px "Plus Jakarta Sans"';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('EAGOX STUDIO', pillX + 42, pillY + pillH/2 + 5);
+
+      // Separator
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.fillText('·', pillX + 155, pillY + pillH/2 + 5);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      ctx.font = '400 13px "JetBrains Mono"';
+      ctx.fillText('DHAKA NODE ONLINE', pillX + 170, pillY + pillH/2 + 5);
+
+      // Main headline
+      ctx.font = '900 72px "Space Grotesk"';
+      ctx.fillStyle = '#ffffff';
+      ctx.textBaseline = 'top';
+
+      const line1 = 'ENGINEERING';
+      const line2 = 'DIGITAL';
+      const line3 = 'INFRASTRUCTURE';
+
+      const l1W = ctx.measureText(line1).width;
+      const l2W = ctx.measureText(line2).width;
+      const l3W = ctx.measureText(line3).width;
+
+      let headlineY = centerY - 60;
+
+      // ENGINEERING
+      ctx.fillText(line1, leftX, headlineY);
+      headlineY += 78;
+
+      // DIGITAL
+      ctx.fillText(line2, leftX, headlineY);
+      headlineY += 78;
+
+      // INFRASTRUCTURE with gradient
+      const infraGradient = ctx.createLinearGradient(leftX, headlineY, leftX + l3W, headlineY + 72);
+      infraGradient.addColorStop(0, '#ffffff');
+      infraGradient.addColorStop(0.5, '#a1a1aa');
+      infraGradient.addColorStop(1, '#71717a');
+      ctx.fillStyle = infraGradient;
+      ctx.fillText(line3, leftX, headlineY);
+
+      // Subtitle
+      ctx.font = '500 20px "Plus Jakarta Sans"';
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillText('Software • AI • Developer Tools', leftX, headlineY + 100);
+
+      // Founder attribution
+      ctx.font = '400 16px "JetBrains Mono"';
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fillText('by Al Shahriar Sowan', leftX, headlineY + 135);
+
+      // Right side - Hex icon (large)
+      const iconSize = 280;
+      const iconX = W - 100 - iconSize;
+      const iconY = centerY - iconSize/2 + 20;
+
+      drawHexIcon(ctx, iconX, iconY, iconSize);
+
+      // Bottom brand bar
+      ctx.fillStyle = 'rgba(255,255,255,0.04)';
+      ctx.fillRect(0, H - 80, W, 80);
+
+      ctx.font = '700 18px "Space Grotesk"';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.fillText('EAGOX STUDIO', W/2, H - 40);
+
+      ctx.font = '400 12px "JetBrains Mono"';
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fillText('eagoxstudio.vercel.app', W/2, H - 18);
+    }
+
+    function drawHexIcon(ctx, x, y, size) {
+      const centerX = x + size/2;
+      const centerY = y + size/2;
+      const radius = size/2 - 10;
+
+      // Hexagon path
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i - Math.PI / 6;
+        const px = centerX + radius * Math.cos(angle);
+        const py = centerY + radius * Math.sin(angle);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+
+      // Stroke with gradient
+      const strokeGrad = ctx.createLinearGradient(x, y, x + size, y + size);
+      strokeGrad.addColorStop(0, '#10b981');
+      strokeGrad.addColorStop(1, '#059669');
+      ctx.strokeStyle = strokeGrad;
+      ctx.lineWidth = 8;
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+
+      // Inner elements
+      // Square
+      const sqSize = size * 0.24;
+      const sqX = centerX - radius * 0.7;
+      const sqY = centerY + radius * 0.2;
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 5;
+      roundRect(ctx, sqX, sqY, sqSize, sqSize, size * 0.05);
+      ctx.stroke();
+
+      // Top line to circle
+      ctx.beginPath();
+      ctx.moveTo(sqX + sqSize/2, sqY);
+      ctx.lineTo(sqX + sqSize/2, sqY - size * 0.15);
+      ctx.quadraticCurveTo(sqX + sqSize/2, sqY - size * 0.2, sqX + sqSize/2 + size * 0.2, sqY - size * 0.2);
+      ctx.lineTo(centerX + radius * 0.3, sqY - size * 0.2);
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 5;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+
+      // Top circle
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath();
+      ctx.arc(centerX + radius * 0.35, sqY - size * 0.2, size * 0.07, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bottom line
+      ctx.beginPath();
+      ctx.moveTo(sqX + sqSize * 0.7, sqY + sqSize * 0.5);
+      ctx.lineTo(centerX + radius * 0.1, sqY + sqSize * 0.5);
+      ctx.quadraticCurveTo(centerX + radius * 0.15, sqY + sqSize * 0.5, centerX + radius * 0.15, sqY + sqSize * 0.5 + size * 0.1);
+      ctx.lineTo(centerX + radius * 0.15, centerY + radius * 0.5);
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 5;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'og-image.png';
+        a.click();
+        URL.revokeObjectURL(url);
+      }, 'image/png', 1.0);
+    });
+  </script>
+</body>
+</html>

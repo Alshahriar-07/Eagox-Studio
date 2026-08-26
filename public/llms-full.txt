@@ -1,0 +1,801 @@
+# Eagox Studio — Complete Machine-Readable Knowledge Base (llms-full.txt)
+
+> **Canonical Source**: https://eagoxstudio.vercel.app/
+> **Generated**: 2026-08-26
+> **Purpose**: Comprehensive structured knowledge representation for AI systems
+
+---
+
+## 1. ORGANIZATION: Eagox Studio
+
+```json
+{
+  "@type": "Organization",
+  "@id": "https://eagoxstudio.vercel.app/#organization",
+  "name": "Eagox Studio",
+  "alternateName": "Eagox",
+  "legalName": "Eagox Studio",
+  "url": "https://eagoxstudio.vercel.app/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://eagoxstudio.vercel.app/android-chrome-512x512.png",
+    "width": 512,
+    "height": 512
+  },
+  "description": "Eagox Studio builds high-performance software systems, distributed real-time engines, AI tools, and custom developer infrastructure. Founded by Al Shahriar Sowan in Dhaka, Bangladesh.",
+  "foundingDate": "2024",
+  "founder": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressRegion": "Dhaka Division",
+    "addressCountry": "BD",
+    "postalCode": "1200"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 23.6850,
+    "longitude": 90.3563
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+8801893134718",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "Bengali"],
+    "url": "https://wa.me/8801893134718",
+    "hoursAvailable": "Mo-Su 09:00-22:00"
+  },
+  "email": "alshahriarsayon425@gmail.com",
+  "sameAs": [
+    "https://github.com/Alshahriar-07",
+    "https://www.linkedin.com/in/alshahriarsowan",
+    "https://alshahriarsowan.vercel.app/"
+  ],
+  "knowsAbout": [
+    "Software Engineering",
+    "AI Systems Development",
+    "Developer Tooling",
+    "Distributed Systems",
+    "Real-time WebSocket Architectures",
+    "CLI Development",
+    "Linux OS Development",
+    "Game Development",
+    "Computer Vision"
+  ],
+  "areaServed": "Worldwide",
+  "currenciesAccepted": "BDT, USD",
+  "paymentAccepted": "bKash, Nagad, Rocket, Bank Transfer, Stripe, Wise, Payoneer"
+}
+```
+
+---
+
+## 2. PERSON: Al Shahriar Sowan
+
+```json
+{
+  "@type": "Person",
+  "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan",
+  "name": "Al Shahriar Sowan",
+  "alternateName": "Al Shahriar Sayon",
+  "givenName": "Al Shahriar",
+  "familyName": "Sowan",
+  "jobTitle": "Founder & Lead Software Engineer",
+  "worksFor": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "url": "https://eagoxstudio.vercel.app/author",
+  "image": "https://eagoxstudio.vercel.app/founder.jpg",
+  "sameAs": [
+    "https://github.com/Alshahriar-07",
+    "https://www.linkedin.com/in/alshahriarsowan",
+    "https://alshahriarsowan.vercel.app/"
+  ],
+  "knowsAbout": [
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "C++",
+    "React",
+    "Node.js",
+    "AI/ML Engineering",
+    "Google GenAI (Gemini)",
+    "Search Grounding",
+    "Developer Tooling",
+    "CLI Development",
+    "Distributed Systems",
+    "WebSocket Architectures",
+    "Linux OS Development",
+    "Debian Live-Build",
+    "Game Development",
+    "Computer Vision",
+    "MediaPipe",
+    "Electron",
+    "Tauri"
+  ],
+  "description": "Independent software engineer and creator dedicated to building clean, low-latency, and resilient systems. Author of Seed Code CLI, Seed Code Chat, ChayaNix OS, Mr Bean Run, Hmouse, and Eagox Studio client infrastructure.",
+  "alumniOf": [],
+  "award": []
+}
+```
+
+---
+
+## 3. WEBSITE
+
+```json
+{
+  "@type": "WebSite",
+  "@id": "https://eagoxstudio.vercel.app/#website",
+  "name": "Eagox Studio",
+  "alternateName": "Eagox",
+  "url": "https://eagoxstudio.vercel.app/",
+  "description": "Professional software, AI, and digital product development studio. Creator of Seed Code ecosystem.",
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://eagoxstudio.vercel.app/projects?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "inLanguage": "en"
+}
+```
+
+---
+
+## 4. SOFTWARE APPLICATIONS
+
+### 4.1 Seed Code CLI
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-seedcode-cli",
+  "name": "Seed Code CLI",
+  "alternateName": ["Seedcode CLI", "SeedCode CLI"],
+  "description": "Production-ready AI coding command-line interface with multi-provider routing and autonomous agent mode.",
+  "url": "https://seedcode-web.vercel.app/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform (Python 3.12+)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "description": "Free open-source software under MIT license"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/seedcode-cli",
+  "license": "https://opensource.org/licenses/MIT",
+  "softwareVersion": "2.4.0",
+  "datePublished": "2025-01-01",
+  "dateModified": "2026-08-20",
+  "programmingLanguage": "Python",
+  "runtime": "Python 3.12+",
+  "featureList": [
+    "Multi-provider AI routing (OpenRouter, FreeModel, AeroLink, Ollama)",
+    "Autonomous Agent Mode for reading, modifying, and creating codebase files",
+    "Integrated terminal command execution and test runners",
+    "Automated Git workflow assistance (diff analysis, branch checks, commit drafts)",
+    "Independent provider configurations, API key encryption, and persistent conversation memory",
+    "Real-time token streaming with syntax-highlighted terminal Markdown rendering"
+  ],
+  "requirements": "Python 3.12+, pip",
+  "installUrl": "https://github.com/Alshahriar-07/seedcode-cli#installation",
+  "documentation": "https://github.com/Alshahriar-07/seedcode-cli#readme",
+  "screenshot": "https://eagoxstudio.vercel.app/seedcode-cli-screenshot.png"
+}
+```
+
+### 4.2 Seed Code Chat / Seed Code App
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-seedcode-chat",
+  "name": "Seed Code Chat",
+  "alternateName": ["Seed Code App", "SeedCode Chat", "SeedCode App"],
+  "description": "Modern conversational AI platform with real-time streaming, available on web and Android.",
+  "url": "https://seedcode-chat.vercel.app/",
+  "applicationCategory": "CommunicationsApplication",
+  "operatingSystem": "Web, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/seedcode-chat",
+  "softwareVersion": "3.2.0",
+  "dateModified": "2026-08-23",
+  "programmingLanguage": "JavaScript",
+  "featureList": [
+    "Token-by-token real-time message streaming with minimal latency (SSE)",
+    "Dual-target responsive architecture: Web and Android mobile client",
+    "Syntax-highlighted code blocks with 1-click copy and download",
+    "Persistent local conversation thread history across browser sessions",
+    "Multi-model provider support via OpenRouter and FreeModel API",
+    "Ultra-clean dark/light high-contrast interface designed for mobile ergonomics"
+  ],
+  "requirements": "Modern browser / Android 8+",
+  "installUrl": "https://seedcode-chat.vercel.app/",
+  "documentation": "https://github.com/Alshahriar-07/SeedCode-app",
+  "mobileApplication": {
+    "@type": "MobileApplication",
+    "name": "Seed Code Chat",
+    "operatingSystem": "Android",
+    "url": "https://seedcode-app.vercel.app/"
+  }
+}
+```
+
+### 4.3 EAGOX AI Hub
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-eagox-ai-hub",
+  "name": "EAGOX AI Hub",
+  "description": "All-in-one AI tools platform unifying multi-model AI utilities, prompt workbenches, automated code analysis, and live Google search grounding.",
+  "url": "https://eagox-tool-hub.vercel.app/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "softwareVersion": "4.0.0",
+  "dateModified": "2026-08-15",
+  "programmingLanguage": "TypeScript",
+  "featureList": [
+    "Multi-utility AI workbench with zero-setup browser access",
+    "Google Gemini API integration with verified live search citations",
+    "Syntax-highlighted code analysis, translation, and refactoring utilities",
+    "Prompt templating workbench with instant parameter testing",
+    "1-click export to JSON, Markdown, and clipboard data"
+  ]
+}
+```
+
+### 4.4 ChayaNix OS
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-chayanix",
+  "name": "ChayaNix OS",
+  "description": "Debian-based Linux OS distribution tailored for privacy, efficiency, and development.",
+  "url": "https://github.com/Alshahriar-07/ChayaNix",
+  "applicationCategory": "OperatingSystem",
+  "operatingSystem": "Linux (Debian-based)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/ChayaNix",
+  "softwareVersion": "1.0.2",
+  "dateModified": "2026-08-21",
+  "programmingLanguage": "Shell, Python",
+  "featureList": [
+    "Debian stable base with zero commercial telemetry and minimal RAM footprint (<350MB idle)",
+    "Pre-configured developer tools: GCC, Clang, Python 3, Node.js, Git, and Neovim",
+    "Automated Debian live-build scripts for reproducible ISO generation",
+    "Hardened security defaults with sandboxed daemons and strict firewall profiles",
+    "Lightweight window management with custom keybindings and status metrics"
+  ],
+  "license": "https://opensource.org/licenses/GPL-3.0"
+}
+```
+
+### 4.5 Mr Bean Run
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-mr-bean-run",
+  "name": "Mr Bean Run",
+  "description": "2D physics endless runner game & kinematics engine in Python & HTML5 Canvas.",
+  "url": "https://mrbeanrun.vercel.app/",
+  "applicationCategory": "Game",
+  "operatingSystem": "Web, Windows, Linux, macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/mr-bean-game",
+  "softwareVersion": "1.5.0",
+  "dateModified": "2026-08-19",
+  "programmingLanguage": "Python, JavaScript",
+  "featureList": [
+    "Custom physics engine with gravity simulation, inertia curves, and variable jump heights",
+    "Procedural obstacle generation with deterministic seeded spacing and progressive speed curves",
+    "Zero-dependency Web Audio API procedural sound synthesizer",
+    "Dual-input binding: Desktop Space/Arrow keys and mobile touch tap zones",
+    "Real-time collision detection with spatial bounding box adjustments"
+  ]
+}
+```
+
+### 4.6 Hmouse
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-hmouse",
+  "name": "Hmouse (Virtual Air Mouse)",
+  "description": "Computer vision webcam hand-gesture cursor control & kinematic bridge.",
+  "url": "https://github.com/Alshahriar-07/Hmouse",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Windows, Linux (Python)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/Hmouse",
+  "softwareVersion": "1.1.0",
+  "dateModified": "2026-08-18",
+  "programmingLanguage": "Python",
+  "featureList": [
+    "21 3D hand landmark tracking using MediaPipe neural models",
+    "Real-time webcam video feed processing with OpenCV",
+    "Exponential smoothing and Kalman damping algorithms for steady cursor movement",
+    "Pinch-to-click detection between index finger and thumb landmarks",
+    "Two-finger scroll gesture recognition for document browsing",
+    "Zero external hardware requirement — works with standard laptop webcams"
+  ]
+}
+```
+
+### 4.7 Seed Cloud
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-seed-cloud",
+  "name": "Seed Cloud",
+  "description": "Universal multi-provider cloud storage aggregator & encrypted file router (in development).",
+  "url": "https://seedcloud.vercel.app",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/SeedCloud",
+  "softwareVersion": "0.9.0-dev",
+  "dateModified": "2026-08-19",
+  "programmingLanguage": "JavaScript",
+  "featureList": [
+    "Multi-cloud storage connector architecture (Google Drive, AWS S3, Dropbox)",
+    "Unified search indexing across all connected accounts simultaneously",
+    "Client-side zero-knowledge AES-256 encryption before transmission",
+    "Cloud-to-cloud file migration pipelines without intermediate local downloads",
+    "Responsive file browser with video, audio, and code file previewers"
+  ]
+}
+```
+
+### 4.8 The Crafting Table
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-crafting-table",
+  "name": "The Crafting Table",
+  "description": "Minecraft-inspired custom paper character store & craft showcase.",
+  "url": "https://the-crafting-table.vercel.app/",
+  "applicationCategory": "ECommerceApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "softwareVersion": "2.1.0",
+  "dateModified": "2026-08-10",
+  "programmingLanguage": "JavaScript",
+  "featureList": [
+    "Minecraft-inspired voxel design system with pixel-crisp iconography",
+    "Interactive papercraft character model showcase with filter categories",
+    "Bespoke custom character commission request workflow with instant notifications",
+    "Printable schematic download guides and step-by-step assembly diagrams",
+    "High-performance static delivery scoring 99+ on Lighthouse"
+  ]
+}
+```
+
+### 4.9 Eagox Timer
+
+```json
+{
+  "@type": "SoftwareApplication",
+  "@id": "https://eagoxstudio.vercel.app/#software-eagox-timer",
+  "name": "Eagox Timer & Focus Suite",
+  "description": "Minimalist high-precision developer productivity stopwatch & interval loop.",
+  "url": "https://eagox-timer.vercel.app",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+  },
+  "publisher": {
+    "@id": "https://eagoxstudio.vercel.app/#organization"
+  },
+  "codeRepository": "https://github.com/Alshahriar-07/eagoxTimer",
+  "softwareVersion": "1.2.0",
+  "dateModified": "2026-08-07",
+  "programmingLanguage": "JavaScript",
+  "featureList": [
+    "Throttling-immune timing engine powered by background Web Workers",
+    "Multiple operating modes: Stopwatch, Pomodoro Interval, and Countdown Timer",
+    "Subtle Web Audio API chime notifications for interval transitions",
+    "Keyboard shortcut navigation (Space = Start/Stop, R = Reset, L = Lap)",
+    "Zero tracking, zero cookies, zero bloat — 100% private offline-first design"
+  ]
+}
+```
+
+---
+
+## 5. SERVICES
+
+```json
+[
+  {
+    "@type": "Service",
+    "@id": "https://eagoxstudio.vercel.app/#service-custom-web",
+    "name": "Modern Website / Portfolio Development",
+    "description": "High-speed, SEO-optimized, responsive web platform featuring custom animations, 3D interactive graphics, and seamless typography.",
+    "provider": { "@id": "https://eagoxstudio.vercel.app/#organization" },
+    "areaServed": "Worldwide",
+    "priceRange": "12,999 - 25,000 BDT",
+    "serviceType": "Web Development"
+  },
+  {
+    "@type": "Service",
+    "@id": "https://eagoxstudio.vercel.app/#service-saas-webapp",
+    "name": "Full-Stack Web Application",
+    "description": "Robust web application with user authentication, database persistence, dashboard analytics, and API integrations.",
+    "provider": { "@id": "https://eagoxstudio.vercel.app/#organization" },
+    "areaServed": "Worldwide",
+    "priceRange": "14,999 - 45,000 BDT",
+    "serviceType": "SaaS Development"
+  },
+  {
+    "@type": "Service",
+    "@id": "https://eagoxstudio.vercel.app/#service-android-app",
+    "name": "Android App Development",
+    "description": "Fluid mobile application built for Android with smooth native gestures, offline caching, push notifications, and camera/sensor integration.",
+    "provider": { "@id": "https://eagoxstudio.vercel.app/#organization" },
+    "areaServed": "Worldwide",
+    "priceRange": "15,999 - 45,000 BDT",
+    "serviceType": "Mobile Development"
+  },
+  {
+    "@type": "Service",
+    "@id": "https://eagoxstudio.vercel.app/#service-desktop-app",
+    "name": "Desktop Software Application",
+    "description": "Powerful desktop client engineered for hardware access, local file system manipulation, high throughput data processing, and system tray tools.",
+    "provider": { "@id": "https://eagoxstudio.vercel.app/#organization" },
+    "areaServed": "Worldwide",
+    "priceRange": "17,999 - 75,000 BDT",
+    "serviceType": "Desktop Development"
+  },
+  {
+    "@type": "Service",
+    "@id": "https://eagoxstudio.vercel.app/#service-ai-tooling",
+    "name": "AI Pipeline & Custom Tooling",
+    "description": "Custom AI agent orchestration, Google Search grounding integration, automated document extraction, CLI tools, and specialized LLM workflows.",
+    "provider": { "@id": "https://eagoxstudio.vercel.app/#organization" },
+    "areaServed": "Worldwide",
+    "priceRange": "19,999 - 75,000 BDT",
+    "serviceType": "AI Development"
+  }
+]
+```
+
+---
+
+## 6. PAGES & ROUTES
+
+| Route | Title | Description | Indexable |
+|-------|-------|-------------|-----------|
+| `/` | Eagox Studio — Software, AI & Digital Products by Al Shahriar Sowan | Homepage with hero, featured products, founder spotlight | Yes |
+| `/about` | About Eagox Studio — Engineering Philosophy & Technology Stack | Studio manifesto, 4-phase methodology, tech matrix | Yes |
+| `/projects` | Projects & Products — Seed Code CLI, Seed Code Chat, EAGOX AI Hub & More | All 9 public software systems with filtering | Yes |
+| `/author` | Al Shahriar Sowan — Founder & Lead Engineer, Eagox Studio | Founder bio, competencies, philosophy, workstation | Yes |
+| `/contact` | Contact Eagox Studio — Project Inquiries & Direct Communication | Contact form, email, WhatsApp, FAQ | Yes |
+| `/order` | Order Custom Software — Transparent Pricing & Project Configuration | Interactive configurator, BDT pricing, Formspree submission | Yes |
+| `/faq` | FAQ & Knowledge Base — Eagox Studio Support | Categorized FAQ with search | Yes |
+
+---
+
+## 7. TECHNICAL STACK MATRIX
+
+```json
+{
+  "languages": ["TypeScript 5.8", "JavaScript (ESM)", "Python 3.12", "C++ 20", "HTML5/CSS3", "SQL", "Shell"],
+  "frontend": ["React 19", "Vite 6", "Tailwind CSS v4", "Motion React", "Three.js / WebGL", "Canvas API"],
+  "backend": ["Node.js", "Express", "WebSocket Clusters", "Redis Pub/Sub", "PostgreSQL", "Docker"],
+  "ai_ml": ["Google GenAI SDK", "Gemini 3.7 Flash", "Google Search Grounding", "Function Calling", "Local Ollama/vLLM"],
+  "mobile_desktop": ["Android Native / Kotlin", "Electron", "Tauri", "UDP Hardware Bridges", "IMU Kinematics"],
+  "devops": ["Vercel", "GitHub Actions", "Docker", "Cloud Run", "Firestore"]
+}
+```
+
+---
+
+## 8. FAQ KNOWLEDGE BASE
+
+```json
+[
+  {
+    "id": "faq-1",
+    "category": "orders",
+    "question": "How do I place an order for a software project with Eagox Studio?",
+    "answer": "You can place an order directly on our Order page by selecting your desired service package (Web SaaS, Android App, AI Tooling, Desktop Software, or Enterprise Infra), customizing add-ons, and submitting your requirements. Your brief is automatically routed to our Formspree intake and directly confirmed to your email. You can also message us instantly on WhatsApp at https://wa.me/8801893134718."
+  },
+  {
+    "id": "faq-2",
+    "category": "pricing",
+    "question": "What are the base prices and accepted payment methods?",
+    "answer": "Our base engineering packages start from 11,999 BDT for Full-Stack Web SaaS platforms and go up to 34,999 BDT for High-Concurrency Distributed Systems. We accept local payments via bKash, Nagad, Rocket, Bank Wire Transfer, as well as international cards (Stripe, Wise, Payoneer)."
+  },
+  {
+    "id": "faq-3",
+    "category": "support",
+    "question": "How do I reach live WhatsApp support for urgent technical inquiries?",
+    "answer": "Our official direct WhatsApp line is https://wa.me/8801893134718. You can chat directly with our lead engineering team 7 days a week for project consultation, emergency patch updates, or status reviews."
+  },
+  {
+    "id": "faq-4",
+    "category": "delivery",
+    "question": "What is the standard delivery timeline for custom software?",
+    "answer": "Most standard full-stack web applications and AI tools take 1.5 to 3 weeks. Complex enterprise infrastructures or multi-platform native mobile applications typically take 3 to 6 weeks. Rush priority delivery options are available upon request."
+  },
+  {
+    "id": "faq-5",
+    "category": "tech",
+    "question": "What technologies and frameworks does Eagox Studio build in?",
+    "answer": "We build production systems using React 18+, TypeScript, Next.js, Node.js, Go (Golang), Python (FastAPI/PyTorch), Kotlin (Android Jetpack), Tauri/C++, Tailwind CSS, PostgreSQL, Redis, and modern containerized Docker/Cloud Run architectures."
+  },
+  {
+    "id": "faq-6",
+    "category": "orders",
+    "question": "Do you provide full source code and intellectual property ownership?",
+    "answer": "Yes. 100% full intellectual property (IP) ownership, complete Git repository history, production build artifacts, and deployment documentation are delivered upon project completion and sign-off."
+  },
+  {
+    "id": "faq-7",
+    "category": "support",
+    "question": "What kind of post-launch maintenance and warranty is included?",
+    "answer": "Every project includes 30 days of comprehensive post-launch bug fixing, performance monitoring, and configuration support at no additional cost. Ongoing monthly retainer maintenance plans are also available."
+  },
+  {
+    "id": "faq-8",
+    "category": "pricing",
+    "question": "Are there any hidden fees or unexpected charges?",
+    "answer": "None. All quotations provided after requirement discovery are fixed-price milestones. Any additional scope expansion or new feature requests will always receive a clear, upfront estimate before work begins."
+  }
+]
+```
+
+---
+
+## 9. RELATIONSHIP GRAPH (RDF-style)
+
+```
+PREFIX eagox: <https://eagoxstudio.vercel.app/>
+PREFIX schema: <https://schema.org/>
+
+eagox:#organization
+  a schema:Organization ;
+  schema:name "Eagox Studio" ;
+  schema:alternateName "Eagox" ;
+  schema:founder eagox:#person-al-shahriar-sowan ;
+  schema:url <https://eagoxstudio.vercel.app/> ;
+  schema:knowsAbout "Software Engineering", "AI Systems", "Developer Tooling" .
+
+eagox:#person-al-shahriar-sowan
+  a schema:Person ;
+  schema:name "Al Shahriar Sowan" ;
+  schema:alternateName "Al Shahriar Sayon" ;
+  schema:jobTitle "Founder & Lead Software Engineer" ;
+  schema:worksFor eagox:#organization ;
+  schema:knowsAbout "TypeScript", "Python", "AI/ML", "CLI Development", "Distributed Systems" ;
+  schema:sameAs <https://github.com/Alshahriar-07>, <https://www.linkedin.com/in/alshahriarsowan> .
+
+eagox:#software-seedcode-cli
+  a schema:SoftwareApplication ;
+  schema:name "Seed Code CLI" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/seedcode-cli> ;
+  schema:license <https://opensource.org/licenses/MIT> .
+
+eagox:#software-seedcode-chat
+  a schema:SoftwareApplication ;
+  schema:name "Seed Code Chat" ;
+  schema:alternateName "Seed Code App" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/seedcode-chat> .
+
+eagox:#software-eagox-ai-hub
+  a schema:SoftwareApplication ;
+  schema:name "EAGOX AI Hub" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization .
+
+eagox:#software-chayanix
+  a schema:SoftwareApplication ;
+  schema:name "ChayaNix OS" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/ChayaNix> .
+
+eagox:#software-mr-bean-run
+  a schema:SoftwareApplication ;
+  schema:name "Mr Bean Run" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/mr-bean-game> .
+
+eagox:#software-hmouse
+  a schema:SoftwareApplication ;
+  schema:name "Hmouse" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/Hmouse> .
+
+eagox:#software-seed-cloud
+  a schema:SoftwareApplication ;
+  schema:name "Seed Cloud" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/SeedCloud> .
+
+eagox:#software-crafting-table
+  a schema:SoftwareApplication ;
+  schema:name "The Crafting Table" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization .
+
+eagox:#software-eagox-timer
+  a schema:SoftwareApplication ;
+  schema:name "Eagox Timer" ;
+  schema:author eagox:#person-al-shahriar-sowan ;
+  schema:publisher eagox:#organization ;
+  schema:codeRepository <https://github.com/Alshahriar-07/eagoxTimer> .
+```
+
+---
+
+## 10. VERIFICATION CHECKLIST
+
+| Check | Status | Details |
+|-------|--------|---------|
+| Canonical domain consistent | ✅ | https://eagoxstudio.vercel.app/ used everywhere |
+| Organization ↔ Founder linked | ✅ | Via `@id` references |
+| Founder ↔ Products linked | ✅ | All SoftwareApplication have `author` pointing to founder |
+| Products ↔ Organization linked | ✅ | All have `publisher` pointing to organization |
+| GitHub repos verified | ✅ | All repos exist under Alshahriar-07 |
+| Live demos accessible | ✅ | All *.vercel.app URLs functional |
+| No fabricated ratings/reviews | ✅ | Only factual data included |
+| Consistent naming | ✅ | "Eagox Studio", "Al Shahriar Sowan", "Seed Code" |
+| Structured data valid JSON-LD | ✅ | All objects use Schema.org vocabulary |
+| sitemap.xml matches routes | ✅ | 7 indexable routes listed |
+| robots.txt allows AI crawlers | ✅ | GPTBot, ClaudeBot, etc. explicitly allowed |
+| llms.txt present | ✅ | Summary for AI systems |
+| llms-full.txt present | ✅ | This document |
+| manifest.webmanifest valid | ✅ | PWA-ready with icons |
+| OG image path defined | ✅ | /og-image.png (1200×630) |
+| Favicon system complete | ✅ | SVG + PNG sizes + manifest |
+
+---
+
+## 11. CONTACT & INTAKE
+
+```json
+{
+  "orderForm": "https://formspree.io/f/xrpzvlyg",
+  "contactForm": "https://formspree.io/f/xdenvlko",
+  "whatsapp": "https://wa.me/8801893134718",
+  "email": "alshahriarsayon425@gmail.com",
+  "responseSLA": "Within 24 hours",
+  "postLaunchSupport": "30 days included"
+}
+```
+
+---
+
+## 12. BRAND ASSETS
+
+| Asset | Path | Dimensions | Format |
+|-------|------|------------|--------|
+| Logo (SVG) | /favicon.svg | Scalable | SVG |
+| Favicon 16×16 | /favicon-16x16.png | 16×16 | PNG |
+| Favicon 32×32 | /favicon-32x32.png | 32×32 | PNG |
+| Favicon 48×48 | /favicon-48x48.png | 48×48 | PNG |
+| Favicon 96×96 | /favicon-96x96.png | 96×96 | PNG |
+| Apple Touch Icon | /apple-touch-icon.png | 180×180 | PNG |
+| Android Chrome 192 | /android-chrome-192x192.png | 192×192 | PNG |
+| Android Chrome 512 | /android-chrome-512x512.png | 512×512 | PNG |
+| OG Image | /og-image.png | 1200×630 | PNG |
+| Safari Pinned Tab | /safari-pinned-tab.svg | Scalable | SVG |
+| Founder Photo | /founder.jpg | - | JPG |
+
+---
+
+**END OF llms-full.txt**

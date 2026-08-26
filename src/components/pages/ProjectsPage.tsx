@@ -7,14 +7,17 @@ import { FeaturedProjectShowcase } from '../projects/FeaturedProjectShowcase';
 import { ProjectFilterToolbar } from '../projects/ProjectFilterToolbar';
 import { ProjectCard } from '../projects/ProjectCard';
 import { ProjectDetailModal } from '../projects/ProjectDetailModal';
+import { useSEO } from '../../hooks/useSEO';
 import { RotateCcw } from 'lucide-react';
 
 interface ProjectsPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
   selectedProjectId?: string | null;
 }
 
-export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate, selectedProjectId }) => {
+export const ProjectsPage: React.FC<ProjectsPageProps> = ({ currentPage, onNavigate, selectedProjectId }) => {
+  useSEO(currentPage);
   const {
     statsMap,
     isLoading,
@@ -47,7 +50,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate, selected
 
   // Featured flagship project (Seed Code CLI)
   const featuredProject = useMemo(() => {
-    return PROJECTS_DATA.find((p) => p.isFeatured) || PROJECTS_DATA[0];
+    return PROJECTS_DATA.find((p) => p.featured) || PROJECTS_DATA[0];
   }, []);
 
   // Category item counts
@@ -121,14 +124,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate, selected
         const starsA = getProjectStats(a).stars || 0;
         const starsB = getProjectStats(b).stars || 0;
         if (starsB !== starsA) return starsB - starsA;
-        return a.featuredOrder - b.featuredOrder;
+        return (a.rank || 999) - (b.rank || 999);
       }
 
       if (sortBy === 'updated') {
         const dateA = getProjectStats(a).lastUpdated ? new Date(getProjectStats(a).lastUpdated!).getTime() : 0;
         const dateB = getProjectStats(b).lastUpdated ? new Date(getProjectStats(b).lastUpdated!).getTime() : 0;
         if (dateB !== dateA) return dateB - dateA;
-        return a.featuredOrder - b.featuredOrder;
+        return (a.rank || 999) - (b.rank || 999);
       }
 
       if (sortBy === 'alphabetical') {
@@ -136,7 +139,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate, selected
       }
 
       // Default 'featured'
-      return a.featuredOrder - b.featuredOrder;
+      return (a.rank || 999) - (b.rank || 999);
     });
   }, [activeCategory, searchQuery, sortBy, getProjectStats]);
 

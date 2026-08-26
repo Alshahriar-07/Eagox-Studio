@@ -3,6 +3,7 @@ import { PageId, OrderFormState } from '../../types';
 import { SERVICE_OPTIONS, ADDON_OPTIONS } from '../../data/projectsData';
 import { useToast } from '../../context/ToastContext';
 import confetti from 'canvas-confetti';
+import { useSEO } from '../../hooks/useSEO';
 import {
   Layers,
   CheckCircle2,
@@ -20,10 +21,12 @@ import {
 } from 'lucide-react';
 
 interface OrderPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
 }
 
-export const OrderPage: React.FC<OrderPageProps> = ({ onNavigate }) => {
+export const OrderPage: React.FC<OrderPageProps> = ({ currentPage, onNavigate }) => {
+  useSEO(currentPage);
   const { toast } = useToast();
   const [selectedService, setSelectedService] = useState<string>(SERVICE_OPTIONS[1].id);
   const [selectedBudget, setSelectedBudget] = useState<string>('15,000 - 25,000 Tk (Standard Release)');

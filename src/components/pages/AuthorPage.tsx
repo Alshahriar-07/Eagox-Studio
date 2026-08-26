@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../../types';
 import { useToast } from '../../context/ToastContext';
 import authorImage from '../../assets/founder.jpeg';
+import { useSEO } from '../../hooks/useSEO';
 import {
   User,
   Mail,
@@ -23,10 +24,12 @@ import {
 } from 'lucide-react';
 
 interface AuthorPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
 }
 
-export const AuthorPage: React.FC<AuthorPageProps> = ({ onNavigate }) => {
+export const AuthorPage: React.FC<AuthorPageProps> = ({ currentPage, onNavigate }) => {
+  useSEO(currentPage);
   const { toast } = useToast();
 
   const handleCopyEmail = () => {

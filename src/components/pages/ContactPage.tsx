@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId, ContactFormState } from '../../types';
 import { useToast } from '../../context/ToastContext';
 import confetti from 'canvas-confetti';
+import { useSEO } from '../../hooks/useSEO';
 import {
   Mail,
   Send,
@@ -18,10 +19,12 @@ import {
 } from 'lucide-react';
 
 interface ContactPageProps {
+  currentPage: PageId;
   onNavigate: (page: PageId) => void;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
+export const ContactPage: React.FC<ContactPageProps> = ({ currentPage, onNavigate }) => {
+  useSEO(currentPage);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState<ContactFormState>({

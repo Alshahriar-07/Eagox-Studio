@@ -3,67 +3,216 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eagox Studio | Professional Website, Web App & App Development</title>
-    <meta name="description" content="Eagox Studio builds professional websites, full-stack web applications, Android apps, desktop software, AI tools, and custom software systems. Founded by Al Shahriar Sayon (Al Shahriar Sowan)." />
-    <meta name="keywords" content="Eagox Studio, Eagox, Al Shahriar Sayon, Al Shahriar Sowan, professional website development, website building, web app development, app development, Android app development, custom software development, SaaS development, AI app development" />
-    <meta name="author" content="Al Shahriar Sayon" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="theme-color" content="#09090b" />
-    <meta property="og:title" content="Eagox Studio | Professional Website, Web App & App Development" />
-    <meta property="og:description" content="Professional website, web app, Android app, AI tool, SaaS, and custom software development by Eagox Studio." />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Eagox Studio" />
-    <link rel="icon" type="image/jpeg" href="/src/assets/icon.jpeg" />
-    <link rel="apple-touch-icon" href="/src/assets/icon.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Eagox Studio",
-            "alternateName": "Eagox",
-            "description": "Professional website, web application, mobile app, AI tooling, SaaS, and custom software development studio.",
-            "founder": {
-              "@type": "Person",
-              "name": "Al Shahriar Sayon",
-              "alternateName": "Al Shahriar Sowan"
-            },
-            "sameAs": [
-              "https://github.com/Alshahriar-07",
-              "https://www.linkedin.com/in/alshahriarsowan"
-            ]
-          },
-          {
-            "@type": "Person",
-            "name": "Al Shahriar Sayon",
-            "alternateName": "Al Shahriar Sowan",
-            "jobTitle": "Software Engineer & Founder",
-            "worksFor": { "@type": "Organization", "name": "Eagox Studio" },
-            "sameAs": [
-              "https://github.com/Alshahriar-07",
-              "https://www.linkedin.com/in/alshahriarsowan",
-              "https://alshahriarsowan.vercel.app/"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "name": "Eagox Studio",
-            "alternateName": "Eagox",
-            "description": "Professional website, web app, mobile app, AI, SaaS, and custom software development."
-          }
-        ]
-      }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@600;700;900&display=swap" rel="stylesheet">
+
+    <!-- ===== CANONICAL BASE ===== -->
+    <base href="https://eagoxstudio.vercel.app/" />
+
+    <!-- ===== PRIMARY META (Homepage defaults) ===== -->
+    <title>Eagox Studio — Software, AI & Digital Products by Al Shahriar Sowan</title>
+    <meta name="description" content="Eagox Studio builds high-performance software systems, AI tools, and developer infrastructure. Founded by Al Shahriar Sowan — creator of Seed Code CLI, Seed Code Chat, and the Seed Code ecosystem." />
+    <meta name="keywords" content="Eagox Studio, Al Shahriar Sowan, Seed Code, Seed Code CLI, Seed Code Chat, software development, AI tools, developer tools, Bangladesh" />
+    <meta name="author" content="Al Shahriar Sowan" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+
+    <!-- ===== CANONICAL URL ===== -->
+    <link rel="canonical" href="https://eagoxstudio.vercel.app/" />
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eagox Studio" />
+    <meta property="og:title" content="Eagox Studio — Software, AI & Digital Products by Al Shahriar Sowan" />
+    <meta property="og:description" content="Eagox Studio builds high-performance software systems, AI tools, and developer infrastructure. Founded by Al Shahriar Sowan — creator of Seed Code CLI, Seed Code Chat, and the Seed Code ecosystem." />
+    <meta property="og:url" content="https://eagoxstudio.vercel.app/" />
+    <meta property="og:image" content="https://eagoxstudio.vercel.app/og-image.png" />
+    <meta property="og:image:secure_url" content="https://eagoxstudio.vercel.app/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eagox Studio — Engineering Digital Infrastructure" />
+
+    <!-- ===== TWITTER / X ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@eagoxstudio" />
+    <meta name="twitter:creator" content="@alshahriarsowan" />
+    <meta name="twitter:title" content="Eagox Studio — Software, AI & Digital Products by Al Shahriar Sowan" />
+    <meta name="twitter:description" content="Eagox Studio builds high-performance software systems, AI tools, and developer infrastructure. Founded by Al Shahriar Sowan." />
+    <meta name="twitter:image" content="https://eagoxstudio.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Eagox Studio — Engineering Digital Infrastructure" />
+
+    <!-- ===== FAVICON / ICON SYSTEM ===== -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#09090b" />
+
+    <!-- ===== DNS PREFETCH / PRECONNECT ===== -->
+    <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="dns-prefetch" href="https://formspree.io" />
+    <link rel="dns-prefetch" href="https://wa.me" />
+
+    <!-- ===== JSON-LD STRUCTURED DATA (Homepage) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://eagoxstudio.vercel.app/#organization",
+          "name": "Eagox Studio",
+          "alternateName": "Eagox",
+          "url": "https://eagoxstudio.vercel.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://eagoxstudio.vercel.app/android-chrome-512x512.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Eagox Studio builds high-performance software systems, distributed real-time engines, AI tools, and custom developer infrastructure. Founded by Al Shahriar Sowan.",
+          "foundingDate": "2024",
+          "founder": {
+            "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dhaka",
+            "addressCountry": "BD"
+          },
+          "sameAs": [
+            "https://github.com/Alshahriar-07",
+            "https://www.linkedin.com/in/alshahriarsowan",
+            "https://alshahriarsowan.vercel.app/"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+8801893134718",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Bengali"],
+            "url": "https://wa.me/8801893134718"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan",
+          "name": "Al Shahriar Sowan",
+          "alternateName": "Al Shahriar Sayon",
+          "jobTitle": "Software Engineer & Founder",
+          "worksFor": {
+            "@id": "https://eagoxstudio.vercel.app/#organization"
+          },
+          "url": "https://eagoxstudio.vercel.app/author",
+          "image": "https://eagoxstudio.vercel.app/founder.jpg",
+          "sameAs": [
+            "https://github.com/Alshahriar-07",
+            "https://www.linkedin.com/in/alshahriarsowan",
+            "https://alshahriarsowan.vercel.app/"
+          ],
+          "knowsAbout": [
+            "Software Engineering",
+            "AI Systems",
+            "Developer Tooling",
+            "Distributed Systems",
+            "TypeScript",
+            "Python",
+            "CLI Development"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://eagoxstudio.vercel.app/#website",
+          "name": "Eagox Studio",
+          "alternateName": "Eagox",
+          "url": "https://eagoxstudio.vercel.app/",
+          "description": "Professional software, AI, and digital product development studio. Creator of Seed Code ecosystem.",
+          "publisher": {
+            "@id": "https://eagoxstudio.vercel.app/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://eagoxstudio.vercel.app/projects?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://eagoxstudio.vercel.app/#software-seedcode-cli",
+          "name": "Seed Code CLI",
+          "alternateName": "Seedcode CLI",
+          "description": "Production-ready AI coding command-line interface with multi-provider routing and autonomous agent mode.",
+          "url": "https://seedcode-web.vercel.app/",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Cross-platform (Python 3.12+)",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "author": {
+            "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+          },
+          "publisher": {
+            "@id": "https://eagoxstudio.vercel.app/#organization"
+          },
+          "codeRepository": "https://github.com/Alshahriar-07/seedcode-cli",
+          "license": "https://opensource.org/licenses/MIT",
+          "softwareVersion": "2.4.0",
+          "programmingLanguage": "Python"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://eagoxstudio.vercel.app/#software-seedcode-chat",
+          "name": "Seed Code Chat",
+          "alternateName": "Seed Code App",
+          "description": "Modern conversational AI platform with real-time streaming, available on web and Android.",
+          "url": "https://seedcode-chat.vercel.app/",
+          "applicationCategory": "CommunicationsApplication",
+          "operatingSystem": "Web, Android",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "author": {
+            "@id": "https://eagoxstudio.vercel.app/#person-al-shahriar-sowan"
+          },
+          "publisher": {
+            "@id": "https://eagoxstudio.vercel.app/#organization"
+          },
+          "codeRepository": "https://github.com/Alshahriar-07/seedcode-chat",
+          "softwareVersion": "3.2.0",
+          "programmingLanguage": "JavaScript"
+        }
+      ]
+    }
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Google tag (gtag.js) placeholder - replace G-XXXXXXXXXX with actual measurement ID -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
   </body>
 </html>
-

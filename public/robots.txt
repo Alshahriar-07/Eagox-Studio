@@ -1,4 +1,94 @@
+# Eagox Studio robots.txt
+# Allows legitimate search and AI crawlers to access public content
+
 User-agent: *
 Allow: /
 
-# Add the final production-domain sitemap URL after deployment.
+# Sitemap location
+Sitemap: https://eagoxstudio.vercel.app/sitemap.xml
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 10
+
+# Host directive for canonical domain
+Host: https://eagoxstudio.vercel.app
+
+# Disallow private/admin paths (none currently exist, but good practice)
+Disallow: /api/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /generate-icons.html
+Disallow: /generate-og-image.html
+
+# Allow specific crawlers explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Social Preview Crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Do not block verified bots by default
+# If you need to block malicious bots, add specific User-agent rules
