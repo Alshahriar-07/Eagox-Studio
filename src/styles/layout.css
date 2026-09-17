@@ -1,0 +1,30 @@
+/*
+ * Eagox Studio — Layout primitives
+ * Container, section rhythm, and the app shell grid (nav / main / footer).
+ */
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  position: relative;
+  isolation: isolate;
+}
+
+.app-shell > .app-main {
+  flex: 1;
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+}

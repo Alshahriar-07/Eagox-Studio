@@ -1,0 +1,147 @@
+/*
+ * Eagox Studio — Design Tokens
+ * Source of truth: Eagox-Studio-plan/04-VISUAL-DESIGN-SYSTEM.md
+ * Graphite × Titanium × Ice Glass
+ *
+ * Tokens are consumed via CSS custom properties. Components must not
+ * hardcode palette or spacing values.
+ */
+
+:root {
+  /* ---------------------------------- */
+  /* Color — palette                    */
+  /* ---------------------------------- */
+  --color-graphite: #07090d;
+  --color-carbon: #0d1118;
+  --color-slate: #151b25;
+
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #b8c0cc;
+  --color-text-muted: #737d8c;
+
+  --color-ice: #9fb4d0;
+  --color-steel: #6f86a8;
+
+  /* Semantic aliases */
+  --color-bg: var(--color-graphite);
+  --color-surface: var(--color-carbon);
+  --color-surface-raised: var(--color-slate);
+  --color-accent: var(--color-ice);
+  --color-accent-strong: var(--color-steel);
+  --color-border: rgba(210, 220, 235, 0.16);
+  --color-border-strong: rgba(210, 220, 235, 0.28);
+
+  /* Status (muted, glass-compatible — no neon) */
+  --status-success: #7aa876;
+  --status-error: #b06c6c;
+
+  /* Glass surfaces (documented) */
+  --glass-light: rgba(220, 230, 245, 0.08);
+  --glass-dark: rgba(10, 16, 26, 0.45);
+  --glass-border: rgba(210, 220, 235, 0.16);
+
+  /* ---------------------------------- */
+  /* Typography                         */
+  /* Display: Syne · Accent: Cormorant Garamond · Meta: IBM Plex Mono */
+  /* ---------------------------------- */
+  --font-display: var(--font-syne), "Segoe UI", system-ui, sans-serif;
+  --font-editorial: var(--font-cormorant), Georgia, serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", Consolas, monospace;
+  --font-sans: var(--font-syne), system-ui, sans-serif;
+
+  --text-xs: 0.75rem; /* 12px — meta labels only, never body copy */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.375rem; /* 22px */
+  --text-2xl: clamp(1.6rem, 1.35rem + 1vw, 2rem);
+  --text-3xl: clamp(2rem, 1.6rem + 1.8vw, 2.75rem);
+  --text-4xl: clamp(2.5rem, 1.9rem + 2.8vw, 4rem);
+  --text-5xl: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.35;
+  --leading-normal: 1.65;
+
+  --tracking-tight: -0.02em;
+  --tracking-label: 0.18em; /* fine technical labels */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------------------------------- */
+  /* Spacing scale (4px base)           */
+  /* ---------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --section-y: clamp(var(--space-8), 12vw, var(--space-10));
+  --gutter: clamp(var(--space-4), 5vw, var(--space-8));
+
+  /* ---------------------------------- */
+  /* Radii — controlled                 */
+  /* ---------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* ---------------------------------- */
+  /* Borders                            */
+  /* ---------------------------------- */
+  --border-thin: 1px;
+  --border-hairline: 1px;
+
+  /* ---------------------------------- */
+  /* Shadows — soft depth               */
+  /* ---------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(4, 6, 10, 0.4);
+  --shadow-md: 0 8px 24px rgba(4, 6, 10, 0.35);
+  --shadow-lg: 0 16px 48px rgba(4, 6, 10, 0.45);
+  --shadow-inset-highlight: inset 0 1px 0 rgba(220, 230, 245, 0.08);
+
+  /* ---------------------------------- */
+  /* Blur — glass                        */
+  /* ---------------------------------- */
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+
+  /* ---------------------------------- */
+  /* Motion — animation timings         */
+  /* All transforms GPU-friendly (opacity/transform only). */
+  /* ---------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-glass: cubic-bezier(0.25, 0.6, 0.3, 1);
+
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 700ms;
+
+  /* ---------------------------------- */
+  /* Z-index layers                     */
+  /* ---------------------------------- */
+  --z-background: 0;
+  --z-content: 10;
+  --z-nav: 40;
+  --z-overlay: 50;
+
+  /* ---------------------------------- */
+  /* Breakpoints (min-width, read via JS/media queries).
+     CSS custom properties cannot be used inside @media queries,
+     so these mirror the tokens below for tooling reference.   */
+  /* 640 / 768 / 1024 / 1280 / 1536 */
+}

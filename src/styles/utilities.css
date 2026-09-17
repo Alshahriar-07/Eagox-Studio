@@ -1,0 +1,59 @@
+/*
+ * Eagox Studio — Utilities
+ * Typography helpers and small shared patterns.
+ */
+
+.text-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.text-editorial {
+  font-family: var(--font-editorial);
+  font-weight: var(--weight-regular);
+  font-style: italic;
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Section heading block: kicker + title rhythm */
+.section-heading {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.section-heading-title {
+  font-size: var(--text-3xl);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.not-found {
+  padding-block-start: calc(68px + var(--space-9));
+}

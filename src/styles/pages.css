@@ -1,0 +1,228 @@
+/*
+ * Eagox Studio — Page styles (Services / Projects)
+ * Page headers, glass pricing cards, project filter, project grid.
+ * All values from tokens.css.
+ */
+
+/* ---------------------------------- */
+/* Page headers                       */
+/* ---------------------------------- */
+.page-top {
+  padding-block-start: calc(68px + var(--space-8));
+  padding-block-end: 0;
+}
+
+.page-top .section-heading-title {
+  font-size: var(--text-4xl);
+}
+
+.page-intro {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+}
+
+.section-tight {
+  padding-block: var(--space-7);
+}
+
+/* ---------------------------------- */
+/* Services page                      */
+/* ---------------------------------- */
+.services-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.pricing-card {
+  height: 100%;
+}
+
+.pricing-card-body {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding: var(--space-6) var(--space-5);
+  height: 100%;
+}
+
+.pricing-card-title {
+  font-size: var(--text-2xl);
+}
+
+.pricing-card-desc {
+  font-size: var(--text-base);
+}
+
+.pricing-card-price {
+  display: grid;
+  gap: var(--space-1);
+  margin-block: var(--space-2);
+}
+
+.pricing-card-price-value {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-ice);
+}
+
+.pricing-card-note {
+  font-size: var(--text-sm);
+}
+
+.pricing-card .btn {
+  justify-self: start;
+  margin-top: var(--space-2);
+}
+
+.services-custom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  padding: var(--space-6);
+  border: var(--border-thin) solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass-dark);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+}
+
+.services-custom-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+/* ---------------------------------- */
+/* Projects page — filter             */
+/* ---------------------------------- */
+.project-filter {
+  margin-bottom: var(--space-6);
+}
+
+.project-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  border: var(--border-thin) solid var(--glass-border);
+  border-radius: var(--radius-full);
+  background: var(--glass-dark);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  width: fit-content;
+  max-width: 100%;
+}
+
+.project-filter-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-glass);
+}
+
+.project-filter-pill:hover {
+  color: var(--color-text-primary);
+}
+
+.project-filter-pill.is-active {
+  color: var(--color-graphite);
+}
+
+.project-filter-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-ice);
+}
+
+.project-filter-label {
+  position: relative;
+  z-index: 1;
+}
+
+.projects-count {
+  margin-bottom: var(--space-4);
+}
+
+.projects-empty {
+  padding: var(--space-8) var(--space-5);
+  border: var(--border-thin) solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass-dark);
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+/* ---------------------------------- */
+/* Projects page — grid               */
+/* ---------------------------------- */
+.projects-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.projects-page-grid > li {
+  display: grid;
+}
+
+.projects-page-grid .project-card {
+  height: 100%;
+}
+
+/* ---------------------------------- */
+/* Responsive                         */
+/* ---------------------------------- */
+@media (max-width: 1023px) {
+  .services-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .page-top {
+    padding-block-start: calc(68px + var(--space-7));
+  }
+
+  .page-top .section-heading-title {
+    font-size: var(--text-3xl);
+  }
+
+  .page-intro {
+    font-size: var(--text-base);
+  }
+
+  .services-page-grid,
+  .projects-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-filter-list {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .project-filter-pill {
+    padding: var(--space-3) var(--space-4);
+    min-height: 44px; /* touch-friendly */
+  }
+
+  .pricing-card-body {
+    padding: var(--space-5) var(--space-4);
+  }
+}

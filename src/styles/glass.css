@@ -1,0 +1,68 @@
+/*
+ * Eagox Studio — Glass system
+ * Source of truth: Eagox-Studio-plan/04-VISUAL-DESIGN-SYSTEM.md (Glass section)
+ *
+ * `glass-base` is shared; GlassPanel composes tone/blur/radius classes on top.
+ * Readability first: no saturated tints, no glow.
+ */
+
+.glass-base {
+  position: relative;
+  border: var(--border-thin) solid var(--glass-border);
+  box-shadow: var(--shadow-md), var(--shadow-inset-highlight);
+}
+
+.glass-light {
+  background: var(--glass-light);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+}
+
+.glass-blur-sm {
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+}
+
+.glass-blur-md {
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+}
+
+.glass-blur-lg {
+  backdrop-filter: blur(var(--blur-lg));
+  -webkit-backdrop-filter: blur(var(--blur-lg));
+}
+
+/* Radii shared by glass surfaces and other primitives */
+.radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+.radius-md {
+  border-radius: var(--radius-md);
+}
+
+.radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.radius-xl {
+  border-radius: var(--radius-xl);
+}
+
+.radius-full {
+  border-radius: var(--radius-full);
+}
+
+/* Fallback when backdrop-filter is unavailable: slightly stronger fill */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-light {
+    background: rgba(220, 230, 245, 0.14);
+  }
+
+  .glass-dark {
+    background: rgba(10, 16, 26, 0.82);
+  }
+}
