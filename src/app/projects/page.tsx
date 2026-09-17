@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { Reveal } from "@/components/motion/Reveal";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageSeo, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Projects",
+export const metadata: Metadata = pageSeo({
+  title: "Eagox Studio Projects | Software & Digital Products",
   description:
-    "The Eagox Studio project index — Seed Code developer tools, AI platforms, ChayaNix OS, desktop assistants, games and client websites, with verified live and GitHub links.",
-  alternates: { canonical: "/projects" },
-  openGraph: pageOpenGraph({
-    title: "Projects",
-    description:
-      "The Eagox Studio project index — Seed Code tools, AI platforms, OS work, games and client websites.",
-    path: "/projects",
-  }),
-};
+    "Projects by Eagox Studio — a working index of websites, web applications, developer tools, AI platforms and digital products built from Dhaka, Bangladesh, with verified live and GitHub links.",
+  path: "/projects",
+});
 
 /**
  * Projects page per Eagox-Studio-plan/08-PROJECTS-PAGE.md:
@@ -27,7 +20,7 @@ export const metadata: Metadata = {
  */
 export default function ProjectsPage() {
   return (
-    <PageTransition>
+    <>
       <Section name="projects-page" className="page-top">
         <Container>
           <Reveal>
@@ -50,6 +43,18 @@ export default function ProjectsPage() {
           </Reveal>
         </Container>
       </Section>
-    </PageTransition>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Projects", path: "/projects" },
+            ]),
+          ),
+        }}
+      />
+    </>
   );
 }

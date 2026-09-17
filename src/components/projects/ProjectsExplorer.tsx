@@ -1,12 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectFilter } from "./ProjectFilter";
 import type { ProjectCategoryFilter } from "./ProjectFilter";
 import { projects } from "@/data/projects";
-import { transitions } from "@/lib/motion";
+import { Reveal } from "@/components/motion/Reveal";
 
 const FILTERS: readonly ProjectCategoryFilter[] = [
   "All",
@@ -20,12 +19,11 @@ const FILTERS: readonly ProjectCategoryFilter[] = [
  * Client-side project index with working category filtering
  * (08-PROJECTS-PAGE.md). Projects document one or more filter categories
  * (e.g. Seed Code Chat targets Web + Android), so matching is inclusive.
- * Layout-animated grid moves — disabled under reduced motion — with no
- * layout instability (single grid container).
+ * Minimal-premium presentation: one spacious editorial column, real
+ * website previews as the visual, quiet typography around them.
  */
 export function ProjectsExplorer() {
   const [filter, setFilter] = useState<ProjectCategoryFilter>("All");
-  const shouldReduceMotion = useReducedMotion();
 
   const filtered = useMemo(
     () =>
@@ -44,21 +42,14 @@ export function ProjectsExplorer() {
         {filter !== "All" ? ` — ${filter}` : ""}
       </p>
 
-      <ul className="projects-page-grid" role="list">
-        <AnimatePresence mode="popLayout" initial={false}>
-          {filtered.map((project) => (
-            <m.li
-              key={project.slug}
-              layout={!shouldReduceMotion}
-              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
-              transition={transitions.glass}
-            >
-              <ProjectCard project={project} expanded />
-            </m.li>
-          ))}
-        </AnimatePresence>
+      <ul className="projects-page-list" role="list">
+        {filtered.map((project, index) => (
+          <li key={project.slug}>
+            <Reveal size="sm">
+              <ProjectCard project={project} index={index} expanded showPreview />
+            </Reveal>
+          </li>
+        ))}
       </ul>
 
       {filtered.length === 0 && (

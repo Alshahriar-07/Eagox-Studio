@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Hero } from "@/components/hero/Hero";
 import { ServicesPreview } from "@/components/services/ServicesPreview";
 import { SelectedProjects } from "@/components/projects/SelectedProjects";
@@ -7,27 +6,36 @@ import { PricingPreview } from "@/components/home/PricingPreview";
 import { StudioStatement } from "@/components/home/StudioStatement";
 import { FinalCta } from "@/components/home/FinalCta";
 import { siteConfig } from "@/data/site";
+import { pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Eagox Studio — We Build Digital Products",
+export const metadata: Metadata = pageSeo({
+  title:
+    "Eagox Studio | Software, Web & Digital Product Development in Bangladesh",
   description:
-    "Eagox Studio designs, engineers and ships websites, web apps, desktop software and Android applications. Transparent starting prices — start your project today.",
-  alternates: { canonical: "/" },
-};
+    "Eagox Studio is a software and digital product studio by Al Shahriar Sowan, building modern websites, web applications, mobile apps and digital solutions in Bangladesh.",
+  path: "/",
+});
 
-/** Structured data: organization identity for the studio. */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/assets/branding/eagox-logo-horizontal-white.svg`,
-  description: siteConfig.description,
-};
+/** Homepage breadcrumb — identity graph (Organization/Person/WebSite) is
+ *  rendered globally by StructuredData in the root layout. */
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteConfig.url,
+      },
+    ],
+  },
+];
 
 export default function HomePage() {
   return (
-    <PageTransition>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -38,6 +46,6 @@ export default function HomePage() {
       <StudioStatement />
       <PricingPreview />
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }

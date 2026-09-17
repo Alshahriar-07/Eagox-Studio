@@ -82,7 +82,7 @@ export const projects: readonly Project[] = [
       { label: "GitHub", url: "https://github.com/Alshahriar-07" },
       {
         label: "Founder Portfolio",
-        url: "https://alshriarsowan.vercel.app/",
+        url: "https://alshahriarsayon.vercel.app/",
       },
     ],
   },
@@ -544,3 +544,17 @@ export const featuredProjects: readonly Project[] = FEATURED_SLUGS.map(
     return project;
   },
 );
+
+/**
+ * First live website URL from a project's links, if any (not GitHub/mail).
+ * Boundary-neutral helper: importable from both server and client files.
+ */
+export function findPreviewUrl(
+  links: readonly ProjectLink[],
+): string | null {
+  const preview = links.find(
+    (link) =>
+      link.url.startsWith("http") && !link.url.includes("github.com"),
+  );
+  return preview?.url ?? null;
+}

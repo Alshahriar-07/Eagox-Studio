@@ -1,29 +1,22 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Reveal } from "@/components/motion/Reveal";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageSeo, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageSeo({
+  title: "Contact Eagox Studio | Start a Software or Web Project",
   description:
-    "Contact Eagox Studio about websites, web apps, desktop software or Android applications.",
-  alternates: { canonical: "/contact" },
-  openGraph: pageOpenGraph({
-    title: "Contact",
-    description:
-      "Contact Eagox Studio about websites, web apps, desktop software or Android applications.",
-    path: "/contact",
-  }),
-};
+    "Contact Eagox Studio about software, websites, web applications and digital products — tell us what you want to build and the studio replies by email.",
+  path: "/contact",
+});
 
 /** Contact page per 10-CONTACT-ORDER.md. */
 export default function ContactPage() {
   return (
-    <PageTransition>
+    <>
       <Section name="contact-intro" className="page-top">
         <Container>
           <Reveal>
@@ -47,6 +40,18 @@ export default function ContactPage() {
           </Reveal>
         </Container>
       </Section>
-    </PageTransition>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Contact", path: "/contact" },
+            ]),
+          ),
+        }}
+      />
+    </>
   );
 }

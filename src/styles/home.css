@@ -8,8 +8,8 @@
 /* Hero — full-bleed cinematic        */
 /* ---------------------------------- */
 /* One editorial column holds the focus; the dedicated artwork sits behind it,
-   structure-weighted to the right. Layered depth: artwork → ambient light →
-   directional scrim → vignette → grain → content. All values hero-scoped. */
+   structure-weighted to the right. Minimal-premium: the background simply
+   sits behind the typography — no decorative atmosphere stack. */
 .hero {
   position: relative;
   display: flex;
@@ -17,9 +17,6 @@
   justify-content: flex-end;
   min-height: 100svh;
   overflow: clip;
-  /* Cursor-tracked ambient light position (set from Hero.tsx) */
-  --hero-light-x: 62%;
-  --hero-light-y: 42%;
 }
 
 /* Background artwork — right-weighted, softened toward the copy column.
@@ -31,7 +28,7 @@
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(100deg, rgba(7, 9, 13, 0.78) 0%, rgba(7, 9, 13, 0.5) 34%, rgba(7, 9, 13, 0.04) 64%, rgba(7, 9, 13, 0.02) 100%),
+    linear-gradient(100deg, rgba(7, 9, 13, 0.72) 0%, rgba(7, 9, 13, 0.45) 34%, rgba(7, 9, 13, 0.04) 64%, rgba(7, 9, 13, 0.02) 100%),
     url("/assets/hero.jpg");
   background-size: cover;
   background-position: 72% center;
@@ -43,64 +40,15 @@
   inset: -4%;
   background-image: radial-gradient(
     120% 90% at 78% 45%,
-    transparent 40%,
-    rgba(7, 9, 13, 0.32) 100%
+    transparent 55%,
+    rgba(7, 9, 13, 0.2) 100%
   );
 }
 
-/* Atmosphere stack */
-.hero-atmosphere {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Cursor-tracked ambient light — a slow, soft pool that follows the pointer */
-.hero-light {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    52% 44% at var(--hero-light-x) var(--hero-light-y),
-    rgba(196, 210, 230, 0.09) 0%,
-    rgba(159, 180, 208, 0.04) 38%,
-    transparent 72%
-  );
-  transition: opacity var(--duration-base) var(--ease-glass);
-}
-
-/* Directional contrast scrim — lighter pass over the artwork base gradient;
-   the copy column stays protected while the artwork keeps its exposure. */
-.hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(7, 9, 13, 0.6) 0%,
-    rgba(7, 9, 13, 0.34) 32%,
-    rgba(7, 9, 13, 0) 62%,
-    rgba(7, 9, 13, 0) 100%
-  );
-}
-
-/* Vignette — softened: only a whisper at the edges and base so the
-   artwork stays bright and detailed. */
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(118% 88% at 30% 76%, transparent 62%, rgba(7, 9, 13, 0.22) 100%),
-    linear-gradient(180deg, rgba(7, 9, 13, 0.28) 0%, transparent 26%, transparent 76%, rgba(7, 9, 13, 0.42) 100%);
-}
-
-/* Fine grain — dithers gradients, prevents banding on the dark field */
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-}
+/* Minimal editorial treatment: the decorative atmosphere layers (ambient
+   light pool, scrim, vignette, grain) were removed in the minimal-premium
+   refinement. Text contrast is handled by the single directional gradient
+   in .hero-background — the artwork simply sits behind the typography. */
 
 /* Editorial column — anchored top-left, above the atmosphere stack.
    The flex column keeps the foot band at the bottom; the content block
@@ -124,22 +72,8 @@
   margin-top: calc(68px + var(--space-7) + var(--hero-shift-y));
 }
 
-/* Foreground depth — faint radial pool behind the copy column. Nearly
-   invisible, but lifts the text off the artwork (no opaque panel). */
-.hero-main::before {
-  content: "";
-  position: absolute;
-  inset: calc(-1 * var(--space-6)) calc(-1 * var(--space-8)) calc(-1 * var(--space-7)) calc(-1 * var(--space-8));
-  background: radial-gradient(
-    58% 62% at 30% 40%,
-    rgba(7, 9, 13, 0.4) 0%,
-    rgba(7, 9, 13, 0.18) 52%,
-    transparent 78%
-  );
-  z-index: -1;
-  pointer-events: none;
-}
-
+/* Foreground — plain editorial column. No radial pool, no glass card: the
+   copy sits directly on the background. Generous whitespace does the work. */
 .hero-main {
   position: relative;
   display: grid;
@@ -149,31 +83,18 @@
   padding-block: var(--space-4) var(--space-8);
 }
 
-/* Premium product label — compact pill, faint fill, hairline border,
-   single glowing accent dot. */
+/* Editorial eyebrow — quiet mono label with a tiny dot. No pill, no border,
+   no glass fill: plain typography does the labeling. */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  border: var(--border-hairline) solid rgba(210, 220, 235, 0.14);
-  background: rgba(10, 16, 26, 0.3);
-  backdrop-filter: blur(var(--blur-sm));
-  -webkit-backdrop-filter: blur(var(--blur-sm));
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-text-secondary);
   white-space: normal;
-  transition: border-color var(--duration-fast) var(--ease-glass),
-    background-color var(--duration-fast) var(--ease-glass);
-}
-
-.hero-badge:hover {
-  border-color: rgba(210, 220, 235, 0.3);
-  background: rgba(10, 16, 26, 0.55);
 }
 
 .hero-badge-dot {
@@ -182,7 +103,6 @@
   height: 4px;
   border-radius: var(--radius-full);
   background: var(--color-ice);
-  box-shadow: 0 0 8px rgba(159, 180, 208, 0.9);
 }
 
 /* Dominant display: enforced three-line lockup at desktop — line 1 clean
@@ -191,9 +111,8 @@
   /* Hero-scoped display size: slightly smaller than --text-5xl so the
      lockup occupies roughly 40–50% of the hero width, never the screen. */
   font-size: clamp(2.6rem, 1.8rem + 3.4vw, 4.6rem);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  text-shadow: 0 2px 24px rgba(4, 6, 10, 0.45);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
 }
 
 .hero-title-line {
@@ -212,7 +131,6 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 2px 18px rgba(159, 180, 208, 0.16));
 }
 
 @media (min-width: 1000px) {
@@ -256,15 +174,7 @@
 }
 
 .hero-actions .btn:hover {
-  transform: translateY(-2px);
-}
-
-.hero-actions .btn-primary {
-  box-shadow: 0 8px 24px rgba(4, 6, 10, 0.35);
-}
-
-.hero-actions .btn-primary:hover {
-  box-shadow: 0 14px 32px rgba(4, 6, 10, 0.42);
+  transform: translateY(-1px);
 }
 
 .hero-cta-arrow {
@@ -393,43 +303,41 @@
   flex-wrap: wrap;
 }
 
+/* Homepage selected work — typography-led entries, no iframes anywhere on
+   the Home page. Fixed-size blocks; whitespace does the separating. */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, 220px);
+  justify-content: start;
+  gap: var(--space-9) var(--space-8);
 }
 
+.projects-grid .project-card {
+  width: 220px;
+  max-width: 100%;
+}
+
+/* Minimal project entry — small live thumbnail + quiet typography.
+   No decorative card shell: whitespace separates the entries. */
 .project-card {
-  height: 100%;
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+}
+
+.project-card-index {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.project-card .project-preview {
+  margin-block-end: var(--space-3);
 }
 
 .project-card-body {
   display: grid;
-  gap: var(--space-3);
-  align-content: start;
-  padding: var(--space-5);
-  height: 100%;
-}
-
-.project-card-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-
-.project-card-mark {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  border: var(--border-thin) solid var(--glass-border);
-  background: var(--glass-light);
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
-  color: var(--color-ice);
+  gap: var(--space-2);
+  justify-items: start;
 }
 
 .project-card-title {
@@ -440,29 +348,62 @@
   text-transform: none;
   letter-spacing: 0.04em;
   white-space: normal;
+  color: var(--color-text-muted);
 }
 
 .project-card-desc {
   font-size: var(--text-sm);
+  max-width: 46ch;
 }
 
-.project-card-tech {
+.project-card-metatext {
+  color: var(--color-text-muted);
+}
+
+.project-card-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-1);
 }
 
-/* Long documented tech names must wrap, never overflow (320px check) */
-.project-card-tech .badge {
-  white-space: normal;
+/* Primary "Visit" link — quiet mono accent, arrow drifts on hover. */
+.project-card-visit {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-ice);
+  transition: color var(--duration-fast) var(--ease-glass);
+}
+
+.project-card-visit:hover {
+  color: var(--color-text-primary);
+}
+
+.project-card-visit span,
+.project-card-link span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-glass);
+}
+
+.project-card-visit:hover span,
+.project-card-link:hover span {
+  transform: translateX(3px);
+}
+
+/* Secondary links — muted plain text. */
+.project-card-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-glass);
+}
+
+.project-card-link:hover {
+  color: var(--color-text-primary);
 }
 
 /* Documented feature list — collapsed by default on the projects page */
-.project-card-features {
-  border-top: var(--border-hairline) solid var(--glass-border);
-  padding-top: var(--space-3);
-}
-
 .project-card-features summary {
   display: inline-flex;
   align-items: center;
@@ -516,38 +457,12 @@
   opacity: 0.7;
 }
 
-.project-card-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
-  margin-top: var(--space-2);
-  padding-top: var(--space-4);
-  border-top: var(--border-hairline) solid var(--glass-border);
-}
-
-.project-card-status {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  min-width: 0;
-}
-
-.project-card-platforms {
-  white-space: normal;
-  letter-spacing: 0.08em;
-}
-
-.project-card-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
-}
-
-.project-card-soon {
-  opacity: 0.7;
+/* Project feature disclosure — hairline separator, plain text list.
+   (Markup retained for documented feature lists on the projects page.) */
+.project-card-features {
+  border-top: var(--border-hairline) solid var(--color-border);
+  padding-top: var(--space-3);
+  width: 100%;
 }
 
 /* ---------------------------------- */
@@ -693,15 +608,6 @@
     background-position: 82% center;
   }
 
-  .hero-scrim {
-    background: linear-gradient(
-      100deg,
-      rgba(7, 9, 13, 0.88) 0%,
-      rgba(7, 9, 13, 0.7) 40%,
-      rgba(7, 9, 13, 0.28) 100%
-    );
-  }
-
   /* Mobile: content moves naturally toward the top; artwork stays behind/low */
   .hero-content {
     margin-top: calc(68px + var(--space-5) + var(--hero-shift-y));
@@ -715,10 +621,6 @@
     max-width: 100%;
     padding-block: var(--space-2) var(--space-7);
     gap: var(--space-4);
-  }
-
-  .hero-main::before {
-    inset: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) calc(-1 * var(--space-6));
   }
 
   .hero-title {

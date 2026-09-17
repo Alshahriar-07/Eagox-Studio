@@ -21,7 +21,7 @@ export const siteConfig = {
   founderRole: "Founder & Lead Software Engineer",
   /** Documented studio links (Core Links section). */
   githubUrl: "https://github.com/Alshahriar-07",
-  founderPortfolioUrl: "https://alshriarsowan.vercel.app/",
+  founderPortfolioUrl: "https://alshahriarsayon.vercel.app/",
   /**
    * Documented "Main Areas" of the studio (info/projects.md). Rendered on
    * the About page as capability chips.

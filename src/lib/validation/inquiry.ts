@@ -1,7 +1,7 @@
 /**
  * Shared, framework-free form validation for the order/contact flows
  * (16-FORM-SECURITY.md: client-side validation for UX; endpoint-side
- * validation happens at the Formspree/spam-protection layer).
+ * validation happens at the Web3Forms/spam-protection layer).
  */
 
 export type FormErrors = Record<string, string>;

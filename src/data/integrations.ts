@@ -1,16 +1,17 @@
 /**
  * Integration configuration.
- * Formspree endpoints are owner-supplied and centralized here
- * (10-CONTACT-ORDER.md, 16-FORM-SECURITY.md). NEXT_PUBLIC_* env overrides
- * remain supported for staging/preview deployments.
+ * Forms submit through Web3Forms (owner-supplied access keys, centralized
+ * here). Web3Forms access keys are designed for client-side use — they are
+ * never rendered in the visible UI. WhatsApp env override remains supported
+ * for staging/preview deployments.
  */
-export const formEndpoints = {
-  order:
-    process.env.NEXT_PUBLIC_ORDER_FORM_ENDPOINT ??
-    "https://formspree.io/f/mvkgoapr",
-  contact:
-    process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ??
-    "https://formspree.io/f/mgavekwo",
+export const web3Forms = {
+  /** Single Web3Forms submission endpoint for all forms. */
+  endpoint: "https://api.web3forms.com/submit",
+  /** Contact page form. */
+  accessKeyContact: "074dfdcb-7445-4817-9888-604b30c8c58f",
+  /** Project / order request form. */
+  accessKeyOrder: "e9e55d03-1c94-421a-aea1-052361dc8912",
 } as const;
 
 /**

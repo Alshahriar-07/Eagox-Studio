@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { TextInput, TextArea, Select, FormStatus } from "@/components/forms";
 import { GlassPanel } from "@/components/glass/GlassPanel";
 import { services } from "@/data/services";
-import { formEndpoints, getWhatsAppLink } from "@/data/integrations";
+import { web3Forms, getWhatsAppLink } from "@/data/integrations";
 import { contactEmail } from "@/data/site";
 import {
   validateRequired,
@@ -18,8 +18,8 @@ import {
 /**
  * Contact form per 10-CONTACT-ORDER.md:
  * name, email, project type, message, optional budget, optional timeline.
- * Submits to the approved Formspree endpoint from the environment; offers
- * a mailto fallback so input is never silently lost.
+ * Submits through Web3Forms with the approved contact access key; offers a
+ * mailto fallback so input is never silently lost.
  */
 export function ContactForm() {
   const [values, setValues] = useState({
@@ -58,23 +58,15 @@ export function ContactForm() {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
-    const endpoint = formEndpoints.contact;
-    if (!endpoint) {
-      setStatus("error");
-      setStatusMessage(
-        "Submission is not configured yet. Use the email fallback below — your message is preserved.",
-      );
-      return;
-    }
-
     setStatus("submitting");
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(web3Forms.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: "Contact — Eagox Studio",
-          type: "contact",
+          access_key: web3Forms.accessKeyContact,
+          subject: "Contact — Eagox Studio",
+          form_type: "contact",
           ...values,
         }),
       });
@@ -83,9 +75,15 @@ export function ContactForm() {
         setStatus("success");
         setStatusMessage("Message sent. We will reply by email.");
       } else {
+        const detail = await response
+          .json()
+          .then((d: { message?: string }) => d.message)
+          .catch(() => null);
         setStatus("error");
         setStatusMessage(
-          "Something went wrong sending your message. Please try again — nothing was lost.",
+          detail
+            ? `Something went wrong sending your message: ${detail} Please try again — nothing was lost.`
+          : "Something went wrong sending your message. Please try again — nothing was lost.",
         );
       }
     } catch {

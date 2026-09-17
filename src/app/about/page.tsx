@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,20 +7,14 @@ import { Badge } from "@/components/ui/Badge";
 import { GlassPanel } from "@/components/glass/GlassPanel";
 import { Reveal } from "@/components/motion/Reveal";
 import { productCategories, siteConfig, studioProductFamilies } from "@/data/site";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageSeo, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About the Studio",
+export const metadata: Metadata = pageSeo({
+  title: "About Eagox Studio | Al Shahriar Sowan",
   description:
-    "Eagox Studio is a software engineering and digital-product studio founded in 2024 in Dhaka, Bangladesh — building high-performance software systems, AI tools, developer infrastructure, websites, web apps and desktop software.",
-  alternates: { canonical: "/about" },
-  openGraph: pageOpenGraph({
-    title: "About the Studio",
-    description:
-      "Eagox Studio is a software engineering and digital-product studio building high-performance software systems, AI tools, developer infrastructure and custom digital products.",
-    path: "/about",
-  }),
-};
+    "About Eagox Studio — a software and digital product studio founded by Al Shahriar Sowan in Dhaka, Bangladesh, building websites, web applications, mobile apps and custom software.",
+  path: "/about",
+});
 
 const APPROACH = [
   {
@@ -48,7 +41,7 @@ const APPROACH = [
  */
 export default function AboutPage() {
   return (
-    <PageTransition>
+    <>
       <Section name="about-intro" className="page-top">
         <Container>
           <SectionHeading kicker="About" level={1}>
@@ -206,6 +199,18 @@ export default function AboutPage() {
           </Reveal>
         </Container>
       </Section>
-    </PageTransition>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+            ]),
+          ),
+        }}
+      />
+    </>
   );
 }

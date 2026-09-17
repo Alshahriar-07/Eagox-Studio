@@ -426,7 +426,7 @@
   background: var(--color-graphite);
 }
 
-.intro-gate-inner {
+.intro-stage {
   position: relative;
   display: grid;
   justify-items: center;
@@ -437,22 +437,36 @@
 
 .intro-wordmark {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+  font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
   font-weight: var(--weight-semibold);
-  letter-spacing: 0.28em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--color-text-primary);
 }
 
-.intro-wordmark span {
+.intro-studio {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.52em;
+  text-indent: 0.52em; /* balances the trailing tracking space */
+  text-transform: uppercase;
   color: var(--color-ice);
 }
 
+/* Solid carbon sheet — the intro exit reuses the page-transition wipe. */
+.intro-wipe {
+  position: absolute;
+  inset: 0;
+  background: var(--color-carbon);
+  will-change: transform;
+}
+
 .intro-rule {
-  width: 128px;
+  width: 110px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-ice), transparent);
-  transform-origin: center;
+  transform-origin: left; /* draws left → right */
 }
 
 .intro-tagline {
@@ -462,7 +476,7 @@
   color: var(--color-text-muted);
 }
 
-/* Thin light sweep that crosses the wordmark once */
+/* Thin light sweep that crosses the identity stack once */
 .intro-sweep {
   position: absolute;
   top: 0;
@@ -478,4 +492,116 @@
     transparent 100%
   );
   filter: blur(2px);
+}
+
+/* ---------------------------------- */
+/* Page-change wipe — solid color sheet */
+/* ---------------------------------- */
+/* Global navigation transition (PageTransition.tsx). A solid Eagox-brand
+   sheet sweeps across the viewport, the route swaps underneath full cover,
+   then the sheet sweeps away in the opposite direction.
+
+   GPU-friendly by construction: the sheet only ever animates
+   transform: translateX(); the fixed inset layer guarantees it can never
+   create horizontal overflow or a scrollbar. No transparency, no gradient,
+   no blur, no glow — a physical solid sheet. */
+
+.wipe-layer {
+  position: fixed;
+  inset: 0;
+  /* Above nav (--z-nav: 40) and standard overlays (--z-overlay: 50). */
+  z-index: calc(var(--z-overlay) + 20);
+  overflow: hidden;
+  /* The layer never blocks clicks while parked; during cover/swap it is
+     switched to pointer-events: auto so the UI is shielded mid-flight. */
+  pointer-events: none;
+}
+
+.wipe-layer[data-phase="covering"],
+.wipe-layer[data-phase="swap"] {
+  pointer-events: auto;
+}
+
+.wipe-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  /* Viewport-width sheet (plus the off-screen parking positions) so no
+     edge of the solid color is ever visible mid-flight. */
+  width: 100vw;
+  background: var(--color-carbon); /* solid brand surface */
+  will-change: transform;
+}
+
+/* Direction 1 — enter from the right edge, exit to the left edge.
+   Parked right (off-screen) → covering (x: 0) → parked left (off-screen). */
+.wipe-layer[data-dir="1"] .wipe-panel {
+  transform: translateX(100vw);
+}
+.wipe-layer[data-dir="1"][data-phase="covering"] .wipe-panel {
+  transform: translateX(0);
+  transition: transform 380ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.wipe-layer[data-dir="1"][data-phase="swap"] .wipe-panel {
+  transform: translateX(0);
+}
+.wipe-layer[data-dir="1"][data-phase="revealing"] .wipe-panel {
+  transform: translateX(-100%);
+  transition: transform 420ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Direction -1 — mirrored: enter from the left, exit to the right. */
+.wipe-layer[data-dir="-1"] .wipe-panel {
+  transform: translateX(-100vw);
+}
+.wipe-layer[data-dir="-1"][data-phase="covering"] .wipe-panel {
+  transform: translateX(0);
+  transition: transform 380ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.wipe-layer[data-dir="-1"][data-phase="swap"] .wipe-panel {
+  transform: translateX(0);
+}
+.wipe-layer[data-dir="-1"][data-phase="revealing"] .wipe-panel {
+  transform: translateX(100%);
+  transition: transform 420ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Destination content reveal — heading/text/cards rise subtly once the
+   sheet starts leaving. Scroll reveal (IntersectionObserver via Reveal)
+   remains a separate system and handles below-fold sections. `backwards`
+   fill keeps the element transform-free after the animation ends. */
+.wipe-content--pending {
+  opacity: 0;
+}
+
+.wipe-content--in {
+  animation: wipe-content-in 460ms var(--ease-out) backwards;
+}
+
+@keyframes wipe-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion — the JS layer never mounts the wipe under
+   prefers-reduced-motion; these guards make the CSS side idempotent. */
+@media (prefers-reduced-motion: reduce) {
+  .wipe-panel {
+    display: none;
+  }
+
+  .wipe-content--pending {
+    opacity: 1;
+  }
+
+  .wipe-content--in {
+    animation: none;
+  }
 }

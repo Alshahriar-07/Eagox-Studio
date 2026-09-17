@@ -38,9 +38,9 @@ export const reducedMotion: Variants = {
   },
 };
 
-/** Section/content reveal — subtle rise. */
+/** Section/content reveal — subtle rise (20px) + fade. */
 export const reveal: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -50,7 +50,7 @@ export const reveal: Variants = {
 
 /** Smaller reveal for inline elements (labels, cards inside grids). */
 export const revealSm: Variants = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
@@ -58,21 +58,8 @@ export const revealSm: Variants = {
   },
 };
 
-/** Page transition — subtle fade + small slide between routes (~380ms in).
- *  Exit stays minimal: App Router unmounts quickly and heavy exit
- *  choreography blocks navigation. */
-export const pageTransition: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.38, ease: easing.out },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.25, ease: easing.inOut },
-  },
-};
+/* Page-change navigation uses the solid-color wipe in
+   components/motion/PageTransition.tsx — not a framer variant. */
 
 /** Hero entrance — cinematic stagger used by the homepage hero.
  *  delayChildren lets the one-time intro veil lift before the sequence starts. */
@@ -104,10 +91,10 @@ export const heroVisual: Variants = {
   },
 };
 
-/** Glass card hover — gentle lift, no glow. */
+/** Card hover — quiet lift, no glow, near-flat. */
 export const cardHover = {
   rest: { y: 0 },
-  hover: { y: -4, transition: transitions.glass },
+  hover: { y: -2, transition: transitions.glass },
 } satisfies Variants;
 
 /** Standard viewport config for scroll reveals. */

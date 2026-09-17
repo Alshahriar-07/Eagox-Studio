@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -9,31 +8,26 @@ import { GlassPanel } from "@/components/glass/GlassPanel";
 import { Reveal } from "@/components/motion/Reveal";
 import { author } from "@/data/author";
 import { siteConfig } from "@/data/site";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageSeo, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Author — Al Shahriar Sowan",
+export const metadata: Metadata = pageSeo({
+  title: "Al Shahriar Sowan | Founder & Software Engineer, Eagox Studio",
   description:
-    "Al Shahriar Sowan (Al Shahriar Sayon), Founder & Lead Software Engineer at Eagox Studio — independent software engineer behind the Seed Code ecosystem, AI tooling, developer infrastructure and desktop software.",
-  alternates: { canonical: "/author" },
-  openGraph: pageOpenGraph({
-    title: "Author — Al Shahriar Sowan",
-    description:
-      "Al Shahriar Sowan, Founder & Lead Software Engineer at Eagox Studio — independent software engineer and product creator.",
-    path: "/author",
-  }),
-};
+    "Al Shahriar Sowan — Founder & Lead Software Engineer at Eagox Studio, Dhaka. Independent software engineer behind the Seed Code ecosystem, AI tooling, developer infrastructure, web and desktop software.",
+  path: "/author",
+});
 
 /**
  * Author page per 09-ABOUT-AUTHOR.md, populated from info/person-author.md —
  * the authoritative source of truth. Every rendered field is documented;
- * nothing is inferred or invented.
+ * nothing is inferred or invented. Person structured data is rendered
+ * globally by StructuredData in the root layout.
  */
 export default function AuthorPage() {
   const focusEntries = author.focus;
 
   return (
-    <PageTransition>
+    <>
       <Section name="author-intro" className="page-top">
         <Container>
           <SectionHeading kicker="Author" level={1}>
@@ -51,12 +45,13 @@ export default function AuthorPage() {
           <Reveal>
             <GlassPanel tone="dark" blur="md" radius="xl" className="author-panel">
               {author.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element -- owner-supplied asset, exact path kept
+                // eslint-disable-next-line @next/next/no-img-element -- owner-supplied exact external URL, no generated replacement
                 <img
                   src={author.imageUrl}
-                  alt={`Portrait of ${author.name}`}
+                  alt="Al Shahriar Sowan — Developer and creator of Eagox Studio"
                   className="author-portrait"
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 /* No portrait asset is documented — typographic monogram
@@ -155,6 +150,18 @@ export default function AuthorPage() {
           </Reveal>
         </Container>
       </Section>
-    </PageTransition>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Author", path: "/author" },
+            ]),
+          ),
+        }}
+      />
+    </>
   );
 }

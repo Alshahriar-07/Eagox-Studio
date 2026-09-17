@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { TextInput, TextArea, FormStatus } from "@/components/forms";
 import { GlassPanel } from "@/components/glass/GlassPanel";
 import { services } from "@/data/services";
-import { formEndpoints, getWhatsAppLink } from "@/data/integrations";
+import { web3Forms, getWhatsAppLink } from "@/data/integrations";
 import { contactEmail } from "@/data/site";
 import {
   validateRequired,
@@ -26,9 +26,9 @@ type OrderFormProps = {
 /**
  * Order flow per 10-CONTACT-ORDER.md:
  * select service → describe requirements → references/links → contact
- * details → review → submit. Submits to the approved Formspree endpoint
- * from the environment; never silently loses input — without a configured
- * endpoint it offers a mailto fallback with the inquiry content.
+ * details → review → submit. Submits through Web3Forms with the approved
+ * order access key; never silently loses input — it offers a mailto
+ * fallback with the inquiry content if submission fails.
  *
  * Note: the fallback mailto uses the approved contact address from
  * siteConfig (contactEmail).
@@ -95,23 +95,15 @@ export function OrderForm({ initialService }: OrderFormProps) {
       return;
     }
 
-    const endpoint = formEndpoints.order;
-    if (!endpoint) {
-      setStatus("error");
-      setStatusMessage(
-        "Submission is not configured yet. Use the email fallback below — your inquiry details are preserved.",
-      );
-      return;
-    }
-
     setStatus("submitting");
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(web3Forms.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: `Project inquiry — ${selectedService.title}`,
-          type: "order",
+          access_key: web3Forms.accessKeyOrder,
+          subject: `Project inquiry — ${selectedService.title}`,
+          form_type: "order",
           service: selectedService.title,
           description: values.description,
           references: values.references,
@@ -126,9 +118,15 @@ export function OrderForm({ initialService }: OrderFormProps) {
         // Successful order submission → dedicated thank-you page.
         window.location.assign("/thank-you");
       } else {
+        const detail = await response
+          .json()
+          .then((d: { message?: string }) => d.message)
+          .catch(() => null);
         setStatus("error");
         setStatusMessage(
-          "Something went wrong sending your inquiry. Please try again — nothing was lost.",
+          detail
+            ? `Something went wrong sending your inquiry: ${detail} Please try again — nothing was lost.`
+            : "Something went wrong sending your inquiry. Please try again — nothing was lost.",
         );
       }
     } catch {

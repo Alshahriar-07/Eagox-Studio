@@ -23,7 +23,7 @@ export function SelectedProjects() {
         <div className="projects-grid">
           {featuredProjects.map((project, index) => (
             <Reveal key={project.slug} delay={index * 0.08} size="sm">
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={index} />
             </Reveal>
           ))}
         </div>

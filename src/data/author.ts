@@ -7,9 +7,9 @@
  * that file. Nothing is inferred or invented
  * (Eagox-Studio-plan/09-ABOUT-AUTHOR.md, 11-CONTENT-DATA.md).
  *
- * Portrait: no image asset is documented in the source files, so `imageUrl`
- * stays null and the page renders a typographic monogram instead of a fake
- * photo.
+ * Portrait: owner-supplied official profile image (exact URL, no generated
+ * replacement) — used as the primary visual identity of the Author page and
+ * referenced as the `image` property of the Person structured data.
  */
 
 export type AuthorLink = {
@@ -32,7 +32,7 @@ export type AuthorProfile = {
   location: string | null;
   /** Documented professional summary paragraphs. */
   bio: readonly string[];
-  /** Owner-approved portrait path under /public; null when unavailable. */
+  /** Owner-supplied official portrait URL; null when unavailable. */
   imageUrl: string | null;
   /** Approved external links only (info/person-author.md). */
   links: readonly AuthorLink[];
@@ -51,15 +51,12 @@ export const author: AuthorProfile = {
     "His work spans AI applications, developer tooling, CLI software, desktop assistants, web applications, Linux/OS development, computer vision, games, cloud infrastructure, and custom digital products.",
     "He is the founder of Eagox Studio and the creator of the Seed Code ecosystem.",
   ],
-  imageUrl: null,
+  imageUrl:
+    "https://raw.githubusercontent.com/Alshahriar-07/portfolio/refs/heads/main/me.png",
   links: [
     {
-      label: "Primary Portfolio",
-      url: "https://alshriarsowan.vercel.app/",
-    },
-    {
-      label: "Alternate Portfolio",
-      url: "https://alshriarsayon.vercel.app/",
+      label: "Portfolio",
+      url: "https://alshahriarsayon.vercel.app/",
     },
     { label: "Eagox Studio", url: "https://eagoxstudio.vercel.app/" },
     { label: "GitHub", url: "https://github.com/Alshahriar-07/" },

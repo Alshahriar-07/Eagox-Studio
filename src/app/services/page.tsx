@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageTransition } from "@/components/motion/PageTransition";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,20 +7,14 @@ import { Reveal } from "@/components/motion/Reveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/site";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageSeo, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services & Pricing",
+export const metadata: Metadata = pageSeo({
+  title: "Eagox Studio Services | Software & Web Development",
   description:
-    "Websites, web apps, desktop software and Android apps by Eagox Studio. Transparent starting prices in BDT — final quotes depend on scope.",
-  alternates: { canonical: "/services" },
-  openGraph: pageOpenGraph({
-    title: "Services & Pricing",
-    description:
-      "Websites, web apps, desktop software and Android apps by Eagox Studio. Transparent starting prices in BDT.",
-    path: "/services",
-  }),
-};
+    "Eagox Studio services: custom web development, software development, web applications, mobile apps and digital products — transparent starting prices in BDT from Dhaka, Bangladesh.",
+  path: "/services",
+});
 
 /**
  * Services page per Eagox-Studio-plan/07-SERVICES-PAGE.md.
@@ -30,7 +23,7 @@ export const metadata: Metadata = {
  */
 export default function ServicesPage() {
   return (
-    <PageTransition>
+    <>
       <Section name="services-page" className="page-top">
         <Container>
           <SectionHeading kicker="Services" level={1}>
@@ -101,23 +94,29 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "OfferCatalog",
-            name: `${siteConfig.name} services`,
-            itemListElement: services.map((service, index) => ({
-              "@type": "Offer",
-              position: index + 1,
-              name: service.title,
-              priceSpecification: {
-                "@type": "PriceSpecification",
-                minPrice: service.startingPrice.replace(/[^\d]/g, ""),
-                priceCurrency: "BDT",
-              },
-            })),
-          }),
+          __html: JSON.stringify([
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Services", path: "/services" },
+            ]),
+            {
+              "@context": "https://schema.org",
+              "@type": "OfferCatalog",
+              name: `${siteConfig.name} services`,
+              itemListElement: services.map((service, index) => ({
+                "@type": "Offer",
+                position: index + 1,
+                name: service.title,
+                priceSpecification: {
+                  "@type": "PriceSpecification",
+                  minPrice: service.startingPrice.replace(/[^\d]/g, ""),
+                  priceCurrency: "BDT",
+                },
+              })),
+            },
+          ]),
         }}
       />
-    </PageTransition>
+    </>
   );
 }

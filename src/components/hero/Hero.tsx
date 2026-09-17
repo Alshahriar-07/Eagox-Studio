@@ -1,21 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { heroStagger, heroChild, heroVisual } from "@/lib/motion";
 
 /**
- * Homepage hero — full-bleed cinematic composition over dedicated artwork.
+ * Homepage hero — minimal editorial composition over dedicated artwork.
  *
- * Left/center column (badge → headline → support → CTAs) holds the visual
- * focus; the artwork's abstract structure sits right-of-frame and is dissolved
- * into the scene by hero-scoped atmosphere layers: a directional scrim, a
- * vignette, a cursor-tracked ambient light, and a fine film-grain pass.
+ * Left column (badge → headline → support → CTAs) holds the visual focus;
+ * the artwork sits right-of-frame and stays visible behind the typography.
+ * Minimal-premium refinement: the decorative atmosphere layers (ambient
+ * light, scrim, vignette, grain) and the cursor-tracked light effect were
+ * removed — one subtle directional gradient on the background protects
+ * text contrast, and the copy sits directly on the artwork.
  *
- * Motion: staggered cinematic entrance, scale-settle on the artwork, a very
- * subtle scroll parallax, and the ambient light. Under prefers-reduced-motion
- * all orchestration props, the parallax, and the light tracking are omitted.
+ * Motion: staggered entrance, scale-settle on the artwork, and a very
+ * subtle scroll parallax. Under prefers-reduced-motion all orchestration
+ * props and the parallax are omitted.
  */
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -43,51 +45,11 @@ export function Hero() {
       };
   const artStyle = shouldReduceMotion ? undefined : { y: artY };
 
-  // Cursor-tracked ambient light — hero-scoped CSS custom properties,
-  // rAF-throttled, fine pointers only. No layout work, no listeners on scroll.
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    const section = sectionRef.current;
-    if (!section) return;
-
-    let raf = 0;
-    let lightX = 0.62;
-    let lightY = 0.42;
-
-    const apply = () => {
-      raf = 0;
-      section.style.setProperty("--hero-light-x", `${(lightX * 100).toFixed(2)}%`);
-      section.style.setProperty("--hero-light-y", `${(lightY * 100).toFixed(2)}%`);
-    };
-
-    const onPointerMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
-      const rect = section.getBoundingClientRect();
-      lightX = (event.clientX - rect.left) / rect.width;
-      lightY = (event.clientY - rect.top) / rect.height;
-      if (!raf) raf = requestAnimationFrame(apply);
-    };
-
-    section.addEventListener("pointermove", onPointerMove);
-    return () => {
-      section.removeEventListener("pointermove", onPointerMove);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [shouldReduceMotion]);
-
   return (
     <section ref={sectionRef} className="hero" aria-labelledby="hero-title">
       {/* Background artwork — right-weighted abstract structure */}
       <div className="hero-background" aria-hidden="true">
         <m.div className="hero-art" style={artStyle} {...visual} />
-      </div>
-
-      {/* Atmosphere — light, contrast scrim, vignette, grain */}
-      <div className="hero-atmosphere" aria-hidden="true">
-        <span className="hero-light" />
-        <span className="hero-scrim" />
-        <span className="hero-vignette" />
-        <span className="hero-grain" />
       </div>
 
       {/* Editorial column — the dominant visual focus */}
@@ -108,7 +70,8 @@ export function Hero() {
 
           <m.p className="hero-description text-secondary" variants={child}>
             From web applications to mobile apps, we design, develop and ship
-            high-quality digital solutions for modern businesses.
+            high-quality digital solutions for modern businesses in Bangladesh
+            and worldwide.
           </m.p>
 
           <m.div className="hero-actions" variants={child}>

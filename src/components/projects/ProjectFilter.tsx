@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { m } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
-import { transitions } from "@/lib/motion";
-import { useReducedMotion } from "framer-motion";
 
 export type ProjectCategoryFilter =
   | "All"
@@ -20,17 +17,16 @@ type ProjectFilterProps = {
 };
 
 /**
- * Accessible category filter (08-PROJECTS-PAGE.md).
- * Implemented as a radiogroup with roving tabindex: arrow keys move between
- * filters (native radio behavior), Tab exits the group. The active pill gets
- * a shared-layout indicator that slides between filters.
+ * Accessible category filter (08-PROJECTS-PAGE.md) — quiet editorial text
+ * buttons with a 1px underline active state (no pill container, no glass).
+ * Radiogroup with roving tabindex: arrow keys move between filters, Tab
+ * exits the group.
  */
 export function ProjectFilter({
   categories,
   active,
   onChange,
 }: ProjectFilterProps) {
-  const shouldReduceMotion = useReducedMotion();
   const listRef = useRef<HTMLUListElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -74,15 +70,6 @@ export function ProjectFilter({
                 className={cn("project-filter-pill", isActive && "is-active")}
                 onClick={() => onChange(category)}
               >
-                {isActive && !shouldReduceMotion && (
-                  <m.span
-                    className="project-filter-indicator"
-                    layoutId="project-filter-indicator"
-                    transition={transitions.glass}
-                    aria-hidden="true"
-                  >
-                  </m.span>
-                )}
                 <span className="project-filter-label">{category}</span>
               </button>
             </li>

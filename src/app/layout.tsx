@@ -3,6 +3,7 @@ import { Syne, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { IntroGate } from "@/components/motion/IntroGate";
+import { PageTransition } from "@/components/motion/PageTransition";
 import { Background } from "@/components/layout/Background";
 import { NavBar } from "@/components/navigation/NavBar";
 import { Footer } from "@/components/layout/Footer";
@@ -37,15 +38,6 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Eagox Studio",
-    "Eagox",
-    "digital product studio",
-    "website development",
-    "web app development",
-    "desktop app development",
-    "Android app development",
-  ],
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
@@ -103,7 +95,8 @@ export default function RootLayout({
           <div className="app-shell">
             <NavBar />
             <main id="main-content" className="app-main">
-              {children}
+              {/* Layout-level route transition — see PageTransition.tsx. */}
+              <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
           </div>

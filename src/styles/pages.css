@@ -65,8 +65,8 @@
 .pricing-card-price-value {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: var(--weight-bold);
-  color: var(--color-ice);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .pricing-card-note {
@@ -78,18 +78,15 @@
   margin-top: var(--space-2);
 }
 
+/* Custom-scope row — plain editorial row, no decorative container. */
 .services-custom-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
   flex-wrap: wrap;
-  padding: var(--space-6);
-  border: var(--border-thin) solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  background: var(--glass-dark);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
+  padding-block: var(--space-4);
+  border-top: var(--border-hairline) solid var(--color-border);
 }
 
 .services-custom-title {
@@ -104,16 +101,11 @@
   margin-bottom: var(--space-6);
 }
 
+/* Filter — quiet text buttons, no pill container, no glass. */
 .project-filter-list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  padding: var(--space-1);
-  border: var(--border-thin) solid var(--glass-border);
-  border-radius: var(--radius-full);
-  background: var(--glass-dark);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
+  gap: var(--space-5);
   width: fit-content;
   max-width: 100%;
 }
@@ -122,12 +114,11 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
+  padding: var(--space-2) 0;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   letter-spacing: 0.04em;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   transition: color var(--duration-fast) var(--ease-glass);
 }
 
@@ -136,49 +127,149 @@
 }
 
 .project-filter-pill.is-active {
-  color: var(--color-graphite);
+  color: var(--color-text-primary);
 }
 
-.project-filter-indicator {
+/* Quiet active marker — a 1px underline, not a filled pill. */
+.project-filter-pill.is-active::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  border-radius: var(--radius-full);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
   background: var(--color-ice);
 }
 
-.project-filter-label {
-  position: relative;
-  z-index: 1;
-}
-
 .projects-count {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .projects-empty {
-  padding: var(--space-8) var(--space-5);
-  border: var(--border-thin) solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  background: var(--glass-dark);
+  padding-block: var(--space-8);
+  border-top: var(--border-hairline) solid var(--color-border);
+  color: var(--color-text-muted);
   text-align: center;
   margin-top: var(--space-4);
 }
 
 /* ---------------------------------- */
-/* Projects page — grid               */
+/* Projects page — compact gallery    */
 /* ---------------------------------- */
-.projects-page-grid {
+/* Premium studio archive: tiny 16:9 live previews (150px, hard-capped) in
+   a clean glass grid. The project is the content; the iframe is a small
+   accent — extra space becomes whitespace, never a larger preview. */
+.projects-page-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, 160px);
+  justify-content: start;
+  gap: var(--space-9) var(--space-8);
 }
 
-.projects-page-grid > li {
-  display: grid;
+/* Parent fix — the block itself is capped so NO child (including the
+   iframe) can ever stretch beyond the strict 160px maximum. */
+.projects-page-list .project-card {
+  width: 160px;
+  max-width: 160px;
 }
 
-.projects-page-grid .project-card {
+/* Browser preview — tiny 16:9 thumbnail with subtle glass treatment.
+   Fixed 150px: no rule allows it to scale with viewport, grid or parent.
+   (aspect-ratio lives on the body so the chrome strip doesn't clip it.) */
+.project-preview {
+  margin: 0;
+  width: 150px;
+  max-width: 150px;
+  overflow: hidden;
+  flex: 0 0 150px;
+  background: var(--glass-dark);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  box-shadow: var(--shadow-sm);
+}
+
+.project-preview-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: var(--border-hairline) solid var(--glass-border);
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: rgba(10, 16, 26, 0.5);
+}
+
+.project-preview-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.project-preview-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: var(--color-slate);
+}
+
+.project-preview-url {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-preview-body {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: var(--border-hairline) solid var(--glass-border);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--color-carbon);
+  overflow: hidden;
+}
+
+/* The iframe fills ONLY its 160px frame — absolutely contained, never the
+   page or the column. */
+.project-preview-body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
+  display: block;
+  border: 0;
+}
+
+.project-preview-loading {
+  position: absolute;
+  inset: 0;
+  background: var(--color-carbon);
+}
+
+/* Blocked embeds (X-Frame-Options / CSP) — clean static panel, never a
+   broken frame. Same fixed 160px size as live previews. */
+.project-preview--blocked {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-2);
+  aspect-ratio: 16 / 9;
+  border: var(--border-hairline) solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-carbon);
+  font-size: var(--text-xs);
+}
+
+.project-preview-open {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-ice);
+  transition: color var(--duration-fast) var(--ease-glass);
+}
+
+.project-preview-open:hover {
+  color: var(--color-text-primary);
 }
 
 /* ---------------------------------- */
@@ -189,8 +280,10 @@
     grid-template-columns: 1fr;
   }
 
-  .projects-page-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Tablet: auto-fill keeps the 160px previews — several per row. */
+  .projects-page-list {
+    grid-template-columns: repeat(auto-fill, 160px);
+    gap: var(--space-8) var(--space-7);
   }
 }
 
@@ -207,9 +300,25 @@
     font-size: var(--text-base);
   }
 
-  .services-page-grid,
-  .projects-page-grid {
+  .services-page-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Mobile: preview and block shrink only when the viewport is narrower
+     than the fixed sizes — never grow beyond them. */
+  .projects-page-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .projects-page-list .project-card {
+    width: min(160px, 100%);
+    max-width: 100%;
+  }
+
+  .project-preview {
+    width: min(150px, 100%);
+    max-width: 150px;
   }
 
   .project-filter-list {
@@ -218,8 +327,12 @@
   }
 
   .project-filter-pill {
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-3) 0;
     min-height: 44px; /* touch-friendly */
+  }
+
+  .project-filter-list {
+    gap: var(--space-4);
   }
 
   .pricing-card-body {

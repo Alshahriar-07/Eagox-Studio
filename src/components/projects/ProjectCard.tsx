@@ -1,11 +1,18 @@
-import { GlassCard } from "@/components/ui/GlassCard";
-import { Badge } from "@/components/ui/Badge";
+import { ProjectPreview } from "./ProjectPreview";
+import { findPreviewUrl } from "@/data/projects";
 import type { Project, ProjectLink } from "@/data/projects";
 
 type ProjectCardProps = {
   project: Project;
-  /** Cards can render the full documented feature list (project page). */
+  /** Stable editorial number (position in the master project index). */
+  index?: number;
+  /** Render the documented feature list disclosure (projects page). */
   expanded?: boolean;
+  /**
+   * Render the tiny live iframe preview. Projects page only — the homepage
+   * never renders website iframes.
+   */
+  showPreview?: boolean;
 };
 
 /**
@@ -15,61 +22,92 @@ type ProjectCardProps = {
 function ProjectLinkItem({
   link,
   projectName,
+  emphasized = false,
 }: {
   link: ProjectLink;
   projectName: string;
+  emphasized?: boolean;
 }) {
   const isMail = link.url.startsWith("mailto:");
   return (
     <a
       href={link.url}
-      className="service-card-link project-card-link"
-      {...(isMail
-        ? {}
-        : { target: "_blank", rel: "noopener noreferrer" })}
-      aria-label={`${link.label} — ${projectName} (opens in a new tab)`}
+      className={emphasized ? "project-card-visit" : "project-card-link"}
+      {...(isMail ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+      aria-label={`${link.label} — ${projectName}${isMail ? "" : " (opens in a new tab)"}`}
     >
-      {link.label} <span aria-hidden="true">↗</span>
+      {link.label} <span aria-hidden="true">→</span>
     </a>
   );
 }
 
 /**
- * Project card per 08-PROJECTS-PAGE.md, populated from info/projects.md.
- * Renders only documented fields — no fabricated facts. With no thumbnails
- * documented, the card uses a typographic monogram instead of a fake image.
+ * Editorial project entry: real website preview first, then quiet
+ * typography — name, type, description, plain links. No badge clusters,
+ * no monogram marks, no decorative card shell. Only documented fields
+ * are rendered (info/projects.md) — nothing fabricated.
  */
-export function ProjectCard({ project, expanded = false }: ProjectCardProps) {
-  const hasLinks = project.links.length > 0;
+export function ProjectCard({
+  project,
+  index,
+  expanded = false,
+  showPreview = false,
+}: ProjectCardProps) {
+  const previewUrl = findPreviewUrl(project.links);
+  const webLinks = project.links.filter(
+    (link) => link.url.startsWith("http") && !link.url.includes("github.com"),
+  );
+  const githubLinks = project.links.filter((link) =>
+    link.url.includes("github.com"),
+  );
+
+  // Quiet metadata line — only documented status/version/platform facts.
+  const metaFacts = [project.version, project.status, project.platforms]
+    .filter((fact): fact is string => Boolean(fact));
 
   return (
-    <GlassCard className="project-card">
-      <div className="project-card-body">
-        <div className="project-card-head">
-          <span className="project-card-mark" aria-hidden="true">
-            {project.name.slice(0, 1)}
-          </span>
-          {project.ownership === "client" && (
-            <Badge>Client project</Badge>
-          )}
-        </div>
+    <article className="project-card">
+      {index !== undefined && (
+        <p className="project-card-index text-label" aria-hidden="true">
+          Project {String(index + 1).padStart(2, "0")}
+        </p>
+      )}
 
+      <div className="project-card-body">
         <h3 className="project-card-title">{project.name}</h3>
         <p className="text-label project-card-type">{project.type}</p>
 
-        <ul
-          className="project-card-tech"
-          role="list"
-          aria-label="Platform categories"
-        >
-          {project.categories.map((category) => (
-            <li key={category}>
-              <Badge>{category}</Badge>
-            </li>
-          ))}
-        </ul>
+        {/* Tiny live preview — projects page only, an accent beneath the
+            name, never the dominant element. The homepage renders no iframe. */}
+        {showPreview && previewUrl ? (
+          <ProjectPreview url={previewUrl} title={project.name} />
+        ) : null}
 
         <p className="project-card-desc text-secondary">{project.description}</p>
+
+        {metaFacts.length > 0 && (
+          <p className="text-label project-card-metatext">{metaFacts.join(" · ")}</p>
+        )}
+
+        {(webLinks.length > 0 || githubLinks.length > 0) && (
+          <div className="project-card-links">
+            {webLinks.map((link, linkIndex) => (
+              <ProjectLinkItem
+                key={link.url}
+                link={link}
+                projectName={project.name}
+                emphasized={linkIndex === 0}
+              />
+            ))}
+            {githubLinks.map((link) => (
+              <ProjectLinkItem
+                key={link.url}
+                link={link}
+                projectName={project.name}
+              />
+            ))}
+          </div>
+        )}
 
         {expanded && project.features.length > 0 && (
           <details className="project-card-features">
@@ -85,36 +123,7 @@ export function ProjectCard({ project, expanded = false }: ProjectCardProps) {
             </ul>
           </details>
         )}
-
-        <div className="project-card-foot">
-          <div className="project-card-status">
-            {project.status && <span className="badge">{project.status}</span>}
-            {project.version && (
-              <span className="badge">{project.version}</span>
-            )}
-            {project.platforms && (
-              <span className="text-label project-card-platforms">
-                {project.platforms}
-              </span>
-            )}
-          </div>
-          {hasLinks ? (
-            <div className="project-card-links">
-              {project.links.map((link) => (
-                <ProjectLinkItem
-                  key={link.url}
-                  link={link}
-                  projectName={project.name}
-                />
-              ))}
-            </div>
-          ) : (
-            <span className="text-label project-card-soon">
-              Case study coming soon
-            </span>
-          )}
-        </div>
       </div>
-    </GlassCard>
+    </article>
   );
 }

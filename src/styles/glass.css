@@ -8,8 +8,9 @@
 
 .glass-base {
   position: relative;
+  /* Minimal-premium: hairline border only — no shadow, no inset highlight.
+     Depth comes from spacing and typography, not surface decoration. */
   border: var(--border-thin) solid var(--glass-border);
-  box-shadow: var(--shadow-md), var(--shadow-inset-highlight);
 }
 
 .glass-light {
