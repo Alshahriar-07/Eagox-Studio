@@ -58,36 +58,39 @@ export const revealSm: Variants = {
   },
 };
 
-/** Page transition — subtle opacity/transform between routes. */
+/** Page transition — subtle fade + small slide between routes (~380ms in).
+ *  Exit stays minimal: App Router unmounts quickly and heavy exit
+ *  choreography blocks navigation. */
 export const pageTransition: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: durations.slow, ease: easing.out },
+    transition: { duration: 0.38, ease: easing.out },
   },
   exit: {
     opacity: 0,
-    y: -12,
-    transition: { duration: durations.fast, ease: easing.inOut },
+    transition: { duration: 0.25, ease: easing.inOut },
   },
 };
 
-/** Hero entrance — cinematic stagger used by the homepage hero. */
+/** Hero entrance — cinematic stagger used by the homepage hero.
+ *  delayChildren lets the one-time intro veil lift before the sequence starts. */
 export const heroStagger: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.11, delayChildren: 0.7 },
   },
 };
 
-/** Hero child element — gentle rise + fade. */
+/** Hero child element — gentle rise + fade + blur resolving to sharp. */
 export const heroChild: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: durations.reveal, ease: easing.out },
+    filter: "blur(0px)",
+    transition: { duration: 0.55, ease: easing.out },
   },
 };
 

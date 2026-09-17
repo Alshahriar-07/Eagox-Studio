@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Syne, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { IntroGate } from "@/components/motion/IntroGate";
 import { Background } from "@/components/layout/Background";
 import { NavBar } from "@/components/navigation/NavBar";
 import { Footer } from "@/components/layout/Footer";
@@ -97,6 +98,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <MotionProvider>
+          <IntroGate />
           <Background />
           <div className="app-shell">
             <NavBar />

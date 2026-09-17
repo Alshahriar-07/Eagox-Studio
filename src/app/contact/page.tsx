@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Reveal } from "@/components/motion/Reveal";
 import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -25,21 +26,25 @@ export default function ContactPage() {
     <PageTransition>
       <Section name="contact-intro" className="page-top">
         <Container>
-          <SectionHeading kicker="Contact" level={1}>
-            Get in touch
-          </SectionHeading>
-          <p className="page-intro text-secondary">
-            Questions about a product, scope or pricing — send a message and
-            the studio replies by email.
-          </p>
+          <Reveal>
+            <SectionHeading kicker="Contact" level={1}>
+              Get in touch
+            </SectionHeading>
+            <p className="page-intro text-secondary">
+              Questions about a product, scope or pricing — send a message and
+              the studio replies by email.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
       <Section name="contact-form" className="section-tight">
         <Container>
-          <div className="form-layout">
-            <ContactForm />
-          </div>
+          <Reveal delay={0.1}>
+            <div className="form-layout">
+              <ContactForm />
+            </div>
+          </Reveal>
         </Container>
       </Section>
     </PageTransition>

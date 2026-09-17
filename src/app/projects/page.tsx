@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
+import { Reveal } from "@/components/motion/Reveal";
 import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -29,20 +30,24 @@ export default function ProjectsPage() {
     <PageTransition>
       <Section name="projects-page" className="page-top">
         <Container>
-          <SectionHeading kicker="Projects" level={1}>
-            Built by Eagox
-          </SectionHeading>
-          <p className="page-intro text-secondary">
-            A working index of Eagox products and client builds across web,
-            desktop and Android. Filter by platform — every entry links out
-            only where a documented destination exists.
-          </p>
+          <Reveal>
+            <SectionHeading kicker="Projects" level={1}>
+              Built by Eagox
+            </SectionHeading>
+            <p className="page-intro text-secondary">
+              A working index of Eagox products and client builds across web,
+              desktop and Android. Filter by platform — every entry links out
+              only where a documented destination exists.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
       <Section name="projects-index" className="section-tight">
         <Container>
-          <ProjectsExplorer />
+          <Reveal delay={0.1}>
+            <ProjectsExplorer />
+          </Reveal>
         </Container>
       </Section>
     </PageTransition>
