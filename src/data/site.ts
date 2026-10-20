@@ -40,10 +40,10 @@ export const siteConfig = {
   ],
   /** Documented starting prices (Eagox-Studio-plan/README.md). Currency: BDT (৳). */
   startingPrices: {
-    portfolioWebsite: "৳3,999+",
-    webApp: "৳5,999+",
-    desktopApp: "৳8,999+",
-    androidApp: "৳8,499+",
+    portfolioWebsite: "৳6,999+",
+    webApp: "৳9,999+",
+    desktopApp: "৳24,999+",
+    androidApp: "৳24,499+",
   },
 } as const;
 
